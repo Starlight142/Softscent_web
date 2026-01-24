@@ -1,0 +1,33 @@
+@model Softscent.Models.SupportMessage
+
+@{
+    ViewData["Title"] = "Reply to Support Request";
+}
+
+<h1>Reply to Request</h1>
+
+<div class="card mb-4">
+    <div class="card-header">
+        From: <strong>@Model.User?.UserName</strong> | Date: @Model.CreatedDate
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">@Model.Subject</h5>
+        <p class="card-text">@Model.Message</p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Reply">
+            <input type="hidden" name="id" value="@Model.Id" />
+            <div class="form-group mb-3">
+                <label for="reply" class="control-label">Your Reply</label>
+                <textarea name="reply" class="form-control" rows="5">@Model.AdminReply</textarea>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Send Reply" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>

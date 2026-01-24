@@ -1,0 +1,35 @@
+@model IEnumerable<Softscent.Models.News>
+
+@{
+    ViewData["Title"] = "ข่าวสารและกิจกรรม";
+}
+
+<div class="container py-5">
+    <h1 class="text-center mb-5">ข่าวสารและกิจกรรมล่าสุด</h1>
+
+    @if (!Model.Any())
+    {
+        <div class="text-center">
+            <p class="lead text-muted">ยังไม่มีข่าวสารในขณะนี้ โปรดติดตามตอนต่อไป!</p>
+        </div>
+    }
+    else
+    {
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-8 offset-md-2 mb-5 border-bottom pb-4">
+                     <div class="d-flex align-items-center mb-2">
+                        <small class="text-muted"><i class="far fa-calendar-alt me-2"></i>@item.PublishedDate.ToString("d MMMM yyyy", new System.Globalization.CultureInfo("th-TH"))</small>
+                    </div>
+                    <h2 class="mb-3">@item.Title</h2>
+                    @if (!string.IsNullOrEmpty(item.ImageUrl))
+                    {
+                        <img src="@item.ImageUrl" class="img-fluid rounded mb-3 shadow-sm" alt="News Image" style="max-height: 400px; width: 100%; object-fit: cover;">
+                    }
+                    <p class="lead" style="white-space: pre-line;">@item.Content</p>
+                </div>
+            }
+        </div>
+    }
+</div>

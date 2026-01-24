@@ -1,0 +1,54 @@
+@model IEnumerable<Softscent.Models.Order>
+
+@{
+    ViewData["Title"] = "Manage Orders";
+}
+
+<h1>Manage Orders</h1>
+
+<table class="table table-hover">
+    <thead class="table-light">
+        <tr>
+            <th>Order ID</th>
+            <th>Date</th>
+            <th>User</th>
+            <th>Total Amount</th>
+            <th>Status</th>
+            <th>Payment</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.OrderDate.ToString("g")</td>
+            <td>@item.UserId</td>
+            <td>
+                @item.OrderDetails.Sum(x => x.UnitPrice * x.Quantity).ToString("C")
+            </td>
+            <td>
+                @if(item.Status == "Completed")
+                {
+                    <span class="badge bg-success">Completed</span>
+                }
+                else if(item.Status == "Pending")
+                {
+                     <span class="badge bg-warning text-dark">Pending</span>
+                }
+                else
+                {
+                    <span class="badge bg-secondary">@item.Status</span>
+                }
+            </td>
+            <td>
+               <span class="badge bg-info text-dark">@item.PaymentMethod</span> 
+               @if(item.PaymentStatus == "Paid") { <i class="fas fa-check-circle text-success ml-1"></i> }
+            </td>
+            <td>
+                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-outline-primary">View & Manage</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,78 @@
+@model IEnumerable<Softscent.Models.Herb>
+
+@{
+    ViewData["Title"] = "ปรุงยาดมในแบบของคุณ";
+}
+
+<div class="container py-5">
+    <div class="row align-items-center">
+        <div class="col-lg-6">
+            <h1 class="mb-4 display-4">ปรุงยาดมในแบบของคุณ</h1>
+            <p class="lead mb-5">เลือกส่วนผสมสมุนไพรพรีเมียมเพื่อกลิ่นและสรรพคุณที่คุณต้องการ</p>
+        </div>
+        <div class="col-lg-6">
+            <div class="card p-5 glass-nav">
+                <form asp-action="AddToCartCustom" method="post">
+                    <h3 class="mb-2">เลือกส่วนผสม</h3>
+                    <p class="text-muted small mb-4">
+                        ส่วนผสมคุณภาพเยี่ยม (@Model.Count())
+                    </p>
+
+                    <div class="mb-4" style="max-height: 500px; overflow-y: auto; padding-right: 10px;">
+                        <h6 class="text-primary fw-bold mb-3 border-bottom pb-2">สมุนไพรคลาสสิก</h6>
+                        @foreach (var herb in Model.Where(h => h.Id <= 6))
+                        {
+                            <div class="form-check mb-3">
+                                <input class="form-check-input herb-checkbox" type="checkbox" value="@herb.Name" id="herb_@herb.Id" name="selectedHerbs_array">
+                                <label class="form-check-label d-flex align-items-center w-100" for="herb_@herb.Id">
+                                    <div class="flex-grow-1">
+                                        <div class="fw-bold">@herb.NameThai</div>
+                                        <div class="text-muted small">@herb.BenefitThai</div>
+                                    </div>
+                                </label>
+                            </div>
+                        }
+
+                        <h6 class="text-primary fw-bold mt-4 mb-3 border-bottom pb-2">สมุนไพรไทยพื้นบ้าน</h6>
+                        @foreach (var herb in Model.Where(h => h.Id > 6))
+                        {
+                            <div class="form-check mb-3">
+                                <input class="form-check-input herb-checkbox" type="checkbox" value="@herb.Name" id="herb_@herb.Id" name="selectedHerbs_array">
+                                <label class="form-check-label d-flex align-items-center w-100" for="herb_@herb.Id">
+                                    <div class="flex-grow-1">
+                                        <div class="fw-bold">@herb.NameThai</div>
+                                        <div class="text-muted small text-success">@herb.BenefitThai</div>
+                                    </div>
+                                </label>
+                            </div>
+                        }
+
+                        @if (!Model.Any())
+                        {
+                             <p>ไม่มีส่วนผสมให้เลือกในขณะนี้</p>
+                        }
+                    </div>
+                    
+                    <!-- Hidden input to store comma separated string -->
+                    <input type="hidden" name="selectedHerbs" id="selectedHerbsInput" />
+
+                    <div class="d-grid mt-4">
+                        <button type="submit" class="btn btn-primary btn-lg" onclick="prepareSubmission()">
+                            เพิ่มลงตะกร้า
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function prepareSubmission() {
+            var checked = document.querySelectorAll('.herb-checkbox:checked');
+            var values = Array.from(checked).map(c => c.value);
+            document.getElementById('selectedHerbsInput').value = values.join(', ');
+        }
+    </script>
+}

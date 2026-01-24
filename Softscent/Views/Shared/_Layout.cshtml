@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Softscent</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Softscent.styles.css" asp-append-version="true" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <nav
+            class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3 fixed-top glass-nav">
+            <div class="container-fluid px-4">
+                <a class="navbar-brand brand-logo" asp-area="" asp-controller="Home" asp-action="Index">Softscent</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home"
+                                asp-action="Index">หน้าแรก</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Products"
+                                asp-action="Index">สินค้า</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Products"
+                                asp-action="Custom">จัดยาดมเอง</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Cart"
+                                asp-action="Index">ตะกร้า</a>
+                        </li>
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-danger fw-bold" asp-area="Admin" asp-controller="Dashboard"
+                                    asp-action="Index"><i class="fas fa-user-shield me-1"></i>Admin</a>
+                            </li>
+                        }
+                    </ul>
+                    <partial name="_LoginPartial" />
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="main-content-wrapper">
+        <div class="container-fluid full-height px-4">
+            <main role="main" class="pb-3 pt-5 mt-5">
+                @RenderBody()
+            </main>
+        </div>
+    </div>
+
+    <footer class="mt-5 pb-5">
+        <div class="container-fluid px-4">
+            <div class="footer-glass py-4 px-5 text-center d-flex justify-content-between align-items-center">
+                <div class="text-dark fw-bold" style="letter-spacing: 1px; font-size: 0.9rem;">
+                    &copy; 2026 SOFTSCENT <span class="text-primary fs-4 mx-2 text-decoration-none">/</span> <span
+                        class="text-muted fw-normal">อโรมาเทอราพีไทยระดับพรีเมียม</span>
+                </div>
+                <div class="social-links d-flex gap-3">
+                    <a href="#" class="text-dark"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="text-dark"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-dark"><i class="fab fa-line"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+
+</html>

@@ -1,0 +1,67 @@
+@model List<Softscent.Models.Order>
+
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Dashboard</h1>
+</div>
+
+<div class="row">
+    <div class="col-md-4 mb-4">
+        <div class="card text-white bg-primary shadow">
+            <div class="card-body">
+                <h5 class="card-title">Total Orders</h5>
+                <p class="card-text display-4">@ViewBag.TotalOrders</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mb-4">
+         <div class="card text-white bg-warning shadow">
+            <div class="card-body">
+                <h5 class="card-title">Pending Orders</h5>
+                <p class="card-text display-4">@ViewBag.PendingOrders</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mb-4">
+         <div class="card text-white bg-success shadow">
+            <div class="card-body">
+                <h5 class="card-title">Total Sales</h5>
+                <p class="card-text display-4">@ViewBag.TotalSales.ToString("C")</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h3>Recent Orders</h3>
+<div class="table-responsive">
+    <table class="table table-striped table-sm">
+        <thead>
+            <tr>
+                <th>Order ID</th>
+                <th>Date</th>
+                <th>Customer</th>
+                <th>Status</th>
+                <th>Amount</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.OrderDate.ToString("g")</td>
+                    <td>@item.UserId</td> <!-- Should show name if possible -->
+                    <td><span class="badge bg-@(item.Status == "Completed" ? "success" : "warning")">@item.Status</span></td>
+                    <td>@item.OrderDetails.Sum(x => x.Quantity * x.UnitPrice).ToString("C")</td>
+                    <td>
+                        <a asp-controller="Orders" asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-outline-secondary">View</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

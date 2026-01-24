@@ -1,0 +1,61 @@
+@model Softscent.Models.Order
+
+@{
+    ViewData["Title"] = "ตะกร้าของคุณ";
+}
+
+<div class="container py-5">
+    <h1 class="mb-4">ตะกร้าสินค้า</h1>
+
+    @if (Model != null && Model.OrderDetails.Any())
+    {
+        <div class="card p-4 shadow-sm border-0">
+            <div class="table-responsive">
+                <table class="table align-middle">
+                    <thead>
+                        <tr>
+                            <th class="border-0">สินค้า</th>
+                            <th class="border-0">ราคา</th>
+                            <th class="border-0">จำนวน</th>
+                            <th class="border-0 text-end">ยอดรวม</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.OrderDetails)
+                        {
+                            <tr>
+                                <td class="py-3">
+                                    <div class="fw-bold">@item.Product.NameThai</div>
+                                    @if (!string.IsNullOrEmpty(item.CustomConfiguration))
+                                    {
+                                        <small class="text-muted">สูตรที่ปรุง: @item.CustomConfiguration</small>
+                                    }
+                                </td>
+                                <td>@item.UnitPrice.ToString("C")</td>
+                                <td>@item.Quantity</td>
+                                <td class="text-end fw-bold">@((item.UnitPrice * item.Quantity).ToString("C"))</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div class="d-flex justify-content-between align-items-center mt-4 pt-3 border-top">
+                <div class="h4 mb-0 fw-bold text-secondary">ยอดรวมสุทธิ</div>
+                <div class="h3 mb-0 fw-bold text-primary">@Model.OrderDetails.Sum(x => x.UnitPrice * x.Quantity).ToString("C")</div>
+            </div>
+        </div>
+        <div class="text-end mt-4">
+            <a asp-action="Checkout" class="btn btn-primary btn-lg px-5 py-3 fw-bold shadow-sm">
+                ดำเนินการชำระเงิน <i class="fas fa-arrow-right ms-2"></i>
+            </a>
+        </div>
+    }
+    else
+    {
+        <div class="text-center py-5">
+            <i class="fas fa-shopping-basket fa-3x text-muted mb-3"></i>
+            <h3>ตะกร้าของคุณยังว่างอยู่</h3>
+            <a asp-controller="Products" asp-action="Index" class="btn btn-outline-primary mt-3">เลือกซื้อสินค้า</a>
+        </div>
+    }
+</div>

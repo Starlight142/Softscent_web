@@ -1,0 +1,66 @@
+@model Softscent.Models.Review
+
+@{
+    ViewData["Title"] = "เขียนรีวิว";
+}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-sm border-0">
+                <div class="card-body p-4">
+                    <h2 class="text-center mb-4">รีวิวสินค้า @ViewBag.ProductName</h2>
+                    <form asp-action="Create">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <input type="hidden" asp-for="ProductId" />
+
+                        <div class="mb-3 text-center">
+                            <label asp-for="Rating" class="form-label lead d-block">คะแนน</label>
+                            <div class="rating-select">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" asp-for="Rating" value="5" id="r5"
+                                        checked>
+                                    <label class="form-check-label text-warning" for="r5"><i class="fas fa-star"></i>
+                                        5</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" asp-for="Rating" value="4" id="r4">
+                                    <label class="form-check-label text-warning" for="r4"><i class="fas fa-star"></i>
+                                        4</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" asp-for="Rating" value="3" id="r3">
+                                    <label class="form-check-label text-warning" for="r3"><i class="fas fa-star"></i>
+                                        3</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" asp-for="Rating" value="2" id="r2">
+                                    <label class="form-check-label text-warning" for="r2"><i class="fas fa-star"></i>
+                                        2</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" asp-for="Rating" value="1" id="r1">
+                                    <label class="form-check-label text-warning" for="r1"><i class="fas fa-star"></i>
+                                        1</label>
+                                </div>
+                            </div>
+                            <span asp-validation-for="Rating" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-4">
+                            <label asp-for="Comment" class="form-label">ความคิดเห็น</label>
+                            <textarea asp-for="Comment" class="form-control" rows="4"
+                                placeholder="บอกเราสิ่งที่ชอบหรือไม่ชอบเกี่ยวกับสินค้านี้"></textarea>
+                            <span asp-validation-for="Comment" class="text-danger"></span>
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary btn-lg">ส่งรีวิว</button>
+                            <a asp-controller="Orders" asp-action="Index" class="btn btn-outline-secondary">ยกเลิก</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

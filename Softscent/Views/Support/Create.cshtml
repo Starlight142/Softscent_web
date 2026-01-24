@@ -1,0 +1,43 @@
+@model Softscent.Models.SupportMessage
+
+@{
+    ViewData["Title"] = "สร้างคำร้องใหม่";
+}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">ติดต่อฝ่ายสนับสนุน</h4>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Create">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group mb-3">
+                            <label asp-for="Subject" class="control-label">หัวข้อ</label>
+                            <input asp-for="Subject" class="form-control" placeholder="ระบุหัวข้อปัญหาอย่างย่อ" />
+                            <span asp-validation-for="Subject" class="text-danger"></span>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label asp-for="Message" class="control-label">รายละเอียด</label>
+                            <textarea asp-for="Message" class="form-control" rows="5"
+                                placeholder="อธิบายปัญหาที่คุณพบให้เราทราบ..."></textarea>
+                            <span asp-validation-for="Message" class="text-danger"></span>
+                        </div>
+                        <div class="d-grid">
+                            <input type="submit" value="ส่งคำร้อง" class="btn btn-primary" />
+                            <a asp-action="Index" class="btn btn-link mt-2">กลับไปยังรายการคำร้อง</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

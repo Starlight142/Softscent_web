@@ -1,0 +1,20 @@
+@{
+    ViewData["Title"] = "ยืนยันการสั่งซื้อสำเร็จ";
+}
+
+<div class="container py-5 text-center">
+    <div class="card p-5 mx-auto" style="max-width: 600px;">
+        <div class="mb-4">
+            <i class="fas fa-check-circle text-success" style="font-size: 5rem;"></i>
+        </div>
+        <h1 class="display-5 fw-bold text-success">ยืนยันการสั่งซื้อสำเร็จ!</h1>
+        <p class="lead mb-4">ขอบคุณที่ไว้วางใจเลือกซื้อสินค้าของเรา คำสั่งซื้อของคุณได้รับการยืนยันและกำลังดำเนินการ</p>
+
+        <p class="text-muted">คุณจะได้รับอีเมลยืนยันในไม่ช้า</p>
+
+        <div class="mt-4">
+            <a asp-controller="Home" asp-action="Index" class="btn btn-primary">กลับสู่หน้าแรก</a>
+            <a asp-controller="Orders" asp-action="Index" class="btn btn-outline-primary ms-2">ดูประวัติการสั่งซื้อ</a>
+        </div>
+    </div>
+</div>
