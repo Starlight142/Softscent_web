@@ -3,8 +3,16 @@ using System.Collections.Generic;
 using System.Data;
 using System.Web.UI;
 
+/// <summary>
+/// Code-behind for the User Profile page.
+/// Allows users to view and update their personal information.
+/// </summary>
 public partial class Pages_Profile : System.Web.UI.Page
 {
+    /// <summary>
+    /// Handles the Page Load event.
+    /// Redirects to login if user is not authenticated.
+    /// </summary>
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session["User"] == null)
@@ -19,6 +27,9 @@ public partial class Pages_Profile : System.Web.UI.Page
         }
     }
 
+    /// <summary>
+    /// Populates the day, month, and year dropdown lists for user birthdate selection.
+    /// </summary>
     private void InitDateDropdowns()
     {
         ddlDay.Items.Add(new System.Web.UI.WebControls.ListItem("Day", ""));
@@ -32,6 +43,10 @@ public partial class Pages_Profile : System.Web.UI.Page
         for (int i = DateTime.Now.Year; i >= 1900; i--) ddlYear.Items.Add(i.ToString());
     }
 
+    /// <summary>
+    /// Loads the user's current profile data from the database.
+    /// handles potential schema variations with try-catch blocks.
+    /// </summary>
     private void LoadProfile()
     {
         string email = Session["User"].ToString();
@@ -47,7 +62,7 @@ public partial class Pages_Profile : System.Web.UI.Page
             txtName.Text = row["FullName"] != DBNull.Value ? row["FullName"].ToString() : "";
             lblDisplayEmail.Text = MaskEmail(email);
 
-            // Try load new fields
+            // Try load extended profile fields (handling legacy gaps)
             try
             {
                 txtPhone.Text = row["PhoneNumber"] != DBNull.Value ? row["PhoneNumber"].ToString() : "";
@@ -77,6 +92,9 @@ public partial class Pages_Profile : System.Web.UI.Page
         }
     }
 
+    /// <summary>
+    /// Helper to partially mask an email address for display (e.g. te****@email.com).
+    /// </summary>
     private string MaskEmail(string email)
     {
         if (string.IsNullOrEmpty(email) || !email.Contains("@")) return email;
@@ -85,6 +103,10 @@ public partial class Pages_Profile : System.Web.UI.Page
         return parts[0].Substring(0, 2) + "****" + "@" + parts[1];
     }
 
+    /// <summary>
+    /// Handles the "Save Profile" button click.
+    /// Updates the user's record in the database.
+    /// </summary>
     protected void btnSave_Click(object sender, EventArgs e)
     {
         string email = Session["User"].ToString();
@@ -101,11 +123,6 @@ public partial class Pages_Profile : System.Web.UI.Page
             }
             catch { }
         }
-
-        // Schema update string
-        // Note: We are dropping Address/City/PostalCode from the query as they aren't in the new UI reference,
-        // but we might want to keep them if I decided to keep the sidebar link active. 
-        // For now, I only update what's in the form.
 
         string updateSql = @"UPDATE Users SET 
                                 FullName = @FullName, 
@@ -134,7 +151,7 @@ public partial class Pages_Profile : System.Web.UI.Page
             lblMessage.Text = "Error updating profile: " + ex.Message;
             lblMessage.CssClass = "text-danger";
 
-            // Auto-fix attempt for new columns
+            // AUTO-SCHEMA FIX: If column doesn't exist, attempt to add it and retry
             if (ex.Message.Contains("Invalid column name"))
             {
                 lblMessage.Text += " Attempting to fix database schema...";

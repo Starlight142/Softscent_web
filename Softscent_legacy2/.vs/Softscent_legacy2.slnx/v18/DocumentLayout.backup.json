@@ -1,22 +1,14 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\ProjectHTML\\Projectwelove\\Softscent_legacy2\\",
+  "WorkspaceRootPath": "D:\\Softscent_web\\Softscent_legacy2\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B4899C51-6591-C54D-6B3D-8798301BFFF9}|D:\\ProjectHTML\\Projectwelove\\Softscent_legacy2\\Softscent_legacy2|D:\\ProjectHTML\\Projectwelove\\Softscent_legacy2\\softscent_legacy2\\index.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{B4899C51-6591-C54D-6B3D-8798301BFFF9}|D:\\ProjectHTML\\Projectwelove\\Softscent_legacy2\\Softscent_legacy2|solutionrelative:softscent_legacy2\\index.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+      "AbsoluteMoniker": "D:0:0:{B4899C51-6591-C54D-6B3D-8798301BFFF9}|D:\\Softscent_web\\Softscent_legacy2\\Softscent_legacy2|d:\\softscent_web\\softscent_legacy2\\softscent_legacy2\\pages\\newsdetails.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4899C51-6591-C54D-6B3D-8798301BFFF9}|D:\\Softscent_web\\Softscent_legacy2\\Softscent_legacy2|solutionrelative:softscent_legacy2\\pages\\newsdetails.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B4899C51-6591-C54D-6B3D-8798301BFFF9}|D:\\ProjectHTML\\Projectwelove\\Softscent_legacy2\\Softscent_legacy2|d:\\projecthtml\\projectwelove\\softscent_legacy2\\softscent_legacy2\\pages\\cart.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B4899C51-6591-C54D-6B3D-8798301BFFF9}|D:\\ProjectHTML\\Projectwelove\\Softscent_legacy2\\Softscent_legacy2|solutionrelative:softscent_legacy2\\pages\\cart.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B4899C51-6591-C54D-6B3D-8798301BFFF9}|D:\\ProjectHTML\\Projectwelove\\Softscent_legacy2\\Softscent_legacy2|D:\\ProjectHTML\\Projectwelove\\Softscent_legacy2\\softscent_legacy2\\pages\\cart.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{B4899C51-6591-C54D-6B3D-8798301BFFF9}|D:\\ProjectHTML\\Projectwelove\\Softscent_legacy2\\Softscent_legacy2|solutionrelative:softscent_legacy2\\pages\\cart.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B4899C51-6591-C54D-6B3D-8798301BFFF9}|D:\\ProjectHTML\\Projectwelove\\Softscent_legacy2\\Softscent_legacy2|D:\\ProjectHTML\\Projectwelove\\Softscent_legacy2\\softscent_legacy2\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
-      "RelativeMoniker": "D:0:0:{B4899C51-6591-C54D-6B3D-8798301BFFF9}|D:\\ProjectHTML\\Projectwelove\\Softscent_legacy2\\Softscent_legacy2|solutionrelative:softscent_legacy2\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+      "AbsoluteMoniker": "D:0:0:{B4899C51-6591-C54D-6B3D-8798301BFFF9}|D:\\Softscent_web\\Softscent_legacy2\\Softscent_legacy2|D:\\Softscent_web\\Softscent_legacy2\\softscent_legacy2\\pages\\news.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{B4899C51-6591-C54D-6B3D-8798301BFFF9}|D:\\Softscent_web\\Softscent_legacy2\\Softscent_legacy2|solutionrelative:softscent_legacy2\\pages\\news.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -34,55 +26,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Cart.aspx",
-              "DocumentMoniker": "D:\\ProjectHTML\\Projectwelove\\Softscent_legacy2\\Softscent_legacy2\\Pages\\Cart.aspx",
-              "RelativeDocumentMoniker": "Softscent_legacy2\\Pages\\Cart.aspx",
-              "ToolTip": "D:\\ProjectHTML\\Projectwelove\\Softscent_legacy2\\Softscent_legacy2\\Pages\\Cart.aspx",
-              "RelativeToolTip": "Softscent_legacy2\\Pages\\Cart.aspx",
-              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2026-01-24T12:25:21.584Z",
+              "DocumentIndex": 0,
+              "Title": "NewsDetails.aspx.cs",
+              "DocumentMoniker": "D:\\Softscent_web\\Softscent_legacy2\\Softscent_legacy2\\Pages\\NewsDetails.aspx.cs",
+              "RelativeDocumentMoniker": "Softscent_legacy2\\Pages\\NewsDetails.aspx.cs",
+              "ToolTip": "D:\\Softscent_web\\Softscent_legacy2\\Softscent_legacy2\\Pages\\NewsDetails.aspx.cs",
+              "RelativeToolTip": "Softscent_legacy2\\Pages\\NewsDetails.aspx.cs",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAhwA4AAABKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-26T12:25:43.889Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Cart.aspx.cs",
-              "DocumentMoniker": "D:\\ProjectHTML\\Projectwelove\\Softscent_legacy2\\Softscent_legacy2\\Pages\\Cart.aspx.cs",
-              "RelativeDocumentMoniker": "Softscent_legacy2\\Pages\\Cart.aspx.cs",
-              "ToolTip": "D:\\ProjectHTML\\Projectwelove\\Softscent_legacy2\\Softscent_legacy2\\Pages\\Cart.aspx.cs",
-              "RelativeToolTip": "Softscent_legacy2\\Pages\\Cart.aspx.cs",
-              "ViewState": "AgIAAEMAAAAAAAAAAAAuwFAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-24T12:25:21.668Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Web.config",
-              "DocumentMoniker": "D:\\ProjectHTML\\Projectwelove\\Softscent_legacy2\\Softscent_legacy2\\Web.config",
-              "RelativeDocumentMoniker": "Softscent_legacy2\\Web.config",
-              "ToolTip": "D:\\ProjectHTML\\Projectwelove\\Softscent_legacy2\\Softscent_legacy2\\Web.config",
-              "RelativeToolTip": "Softscent_legacy2\\Web.config",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
-              "WhenOpened": "2026-01-24T12:23:56.269Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "index.aspx",
-              "DocumentMoniker": "D:\\ProjectHTML\\Projectwelove\\Softscent_legacy2\\Softscent_legacy2\\index.aspx",
-              "RelativeDocumentMoniker": "Softscent_legacy2\\index.aspx",
-              "ToolTip": "D:\\ProjectHTML\\Projectwelove\\Softscent_legacy2\\Softscent_legacy2\\index.aspx",
-              "RelativeToolTip": "Softscent_legacy2\\index.aspx",
+              "Title": "News.aspx",
+              "DocumentMoniker": "D:\\Softscent_web\\Softscent_legacy2\\Softscent_legacy2\\Pages\\News.aspx",
+              "RelativeDocumentMoniker": "Softscent_legacy2\\Pages\\News.aspx",
+              "ToolTip": "D:\\Softscent_web\\Softscent_legacy2\\Softscent_legacy2\\Pages\\News.aspx",
+              "RelativeToolTip": "Softscent_legacy2\\Pages\\News.aspx",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2026-01-24T12:23:38.526Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-26T11:13:53.722Z"
             }
           ]
         }

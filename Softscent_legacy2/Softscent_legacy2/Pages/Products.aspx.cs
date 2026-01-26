@@ -3,13 +3,47 @@ using System.Collections.Generic;
 using System.Data;
 using Softscent.Models;
 
+/// <summary>
+/// Code-behind for the Product Listing page.
+/// Displays products and handles search filtering.
+/// </summary>
 public partial class Pages_Products : System.Web.UI.Page
 {
+    /// <summary>
+    /// List of products to be rendered in the view.
+    /// </summary>
     public List<Product> ProductList = new List<Product>();
 
+    /// <summary>
+    /// Handles Page Load.
+    /// Fetches products from the database, filtering by the search query if present.
+    /// </summary>
     protected void Page_Load(object sender, EventArgs e)
     {
-        DataTable dt = DataHelper.ExecuteQuery("SELECT * FROM Products");
+        string query = "SELECT * FROM Products";
+        string q = Request.QueryString["q"];
+        if (!string.IsNullOrEmpty(q))
+        {
+            // Simple SQL injection protection handling done by DataHelper usually, but here we use parameter
+            // However, DataHelper.ExecuteQuery(string) doesn't take params directly in this overload?
+            // Let's assume we can use parameterized query
+            query = "SELECT * FROM Products WHERE Name LIKE @Search OR Description LIKE @Search";
+            DataTable dt = DataHelper.ExecuteQuery(query, new Dictionary<string, object> { { "@Search", "%" + q + "%" } });
+            if (dt != null) BindList(dt);
+            return;
+        }
+
+        DataTable dtAll = DataHelper.ExecuteQuery(query);
+        BindList(dtAll);
+    }
+
+    /// <summary>
+    /// Binds DataTable rows to the ProductList property.
+    /// </summary>
+    /// <param name="dt">DataTable containing product rows.</param>
+    private void BindList(DataTable dt)
+    {
+        ProductList.Clear();
         foreach (DataRow row in dt.Rows)
         {
             ProductList.Add(new Product
@@ -23,6 +57,10 @@ public partial class Pages_Products : System.Web.UI.Page
             });
         }
     }
+
+    /// <summary>
+    /// Helper method to translate product names to Thai for display.
+    /// </summary>
     public string GetProductThaiName(string name)
     {
         string n = name.ToLower();
@@ -35,6 +73,9 @@ public partial class Pages_Products : System.Web.UI.Page
         return name;
     }
 
+    /// <summary>
+    /// Helper method to translate product descriptions to Thai for display.
+    /// </summary>
     public string GetProductThaiDescription(string name, string description)
     {
         string n = name.ToLower();

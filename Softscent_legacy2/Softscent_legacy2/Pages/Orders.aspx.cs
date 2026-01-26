@@ -3,10 +3,21 @@ using System.Collections.Generic;
 using System.Data;
 using Softscent.Models;
 
+/// <summary>
+/// Code-behind for the Order History page.
+/// Displays a list of previous orders for the logged-in user.
+/// </summary>
 public partial class Pages_Orders : System.Web.UI.Page
 {
+    /// <summary>
+    /// List of orders retrieved for display.
+    /// </summary>
     public List<Order> OrderList = new List<Order>();
 
+    /// <summary>
+    /// Handles the Page Load event. 
+    /// Verifies the user is logged in before attempting to load their order history.
+    /// </summary>
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session["User"] == null)
@@ -17,19 +28,14 @@ public partial class Pages_Orders : System.Web.UI.Page
         LoadOrders();
     }
 
+    /// <summary>
+    /// Queries the database for all orders belonging to the current user.
+    /// </summary>
     private void LoadOrders()
     {
         string userEmail = Session["User"].ToString();
-        // Assuming UserId in Orders table is the email for simple legacy auth or we need to look up ID
-        // The previous cart logic used "Guest".
-        // Let's assume for this feature, we query by UserId column, but since our current simple login uses Email in Session...
-        // We probably need to fetch the User's ID from the Users table first, OR if we modified Checkout to save Email as UserId.
 
-        // Let's check how Checkout was implemented in Cart.aspx.cs
-        // Wait, Checkout in Cart.aspx.cs used "@UserId" = "Guest".
-        // We need to fix Checkout to use the logged-in user!
-
-        // For now, let's look up the User's ID from the email
+        // Fetch the unique User ID associated with the email in the Session
         string userId = GetUserIdFromEmail(userEmail);
 
         string query = "SELECT * FROM Orders WHERE UserId = @UserId ORDER BY OrderDate ASC";
@@ -51,12 +57,13 @@ public partial class Pages_Orders : System.Web.UI.Page
         }
     }
 
+    /// <summary>
+    /// Helper to look up a User ID in the database based on their email address.
+    /// </summary>
+    /// <param name="email">The user's email address.</param>
+    /// <returns>The string representation of the User ID, or 'Guest' if not found.</returns>
     private string GetUserIdFromEmail(string email)
     {
-        // We might simply return the email if UserId column holds strings (which is common in Identity UserIds)
-        // But let's check Users table ID.
-        // Actually, ASP.NET Identity UsertId is a Guid string (NVARCHAR).
-
         DataTable dt = DataHelper.ExecuteQuery("SELECT Id FROM Users WHERE Email = @Email", new Dictionary<string, object> { { "@Email", email } });
         if (dt.Rows.Count > 0)
         {
@@ -65,6 +72,9 @@ public partial class Pages_Orders : System.Web.UI.Page
         return "Guest";
     }
 
+    /// <summary>
+    /// Determines the Bootstrap color class based on the order status.
+    /// </summary>
     public string GetStatusColor(string status)
     {
         switch (status.ToLower())
@@ -73,6 +83,20 @@ public partial class Pages_Orders : System.Web.UI.Page
             case "pending": return "warning";
             case "cancelled": return "danger";
             default: return "secondary";
+        }
+    }
+
+    /// <summary>
+    /// Translates the order status string to Thai for display.
+    /// </summary>
+    public string GetThaiStatus(string status)
+    {
+        switch (status.ToLower())
+        {
+            case "completed": return "สำเร็จ";
+            case "pending": return "รอชำระเงิน";
+            case "cancelled": return "ยกเลิก";
+            default: return status;
         }
     }
 }

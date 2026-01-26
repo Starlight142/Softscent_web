@@ -4,10 +4,21 @@ using System.Linq;
 using System.Data;
 using Softscent.Models;
 
+/// <summary>
+/// Code-behind logic for the Shopping Cart page.
+/// Handles cart operations like adding, updating, and removing items.
+/// </summary>
 public partial class Pages_Cart : System.Web.UI.Page
 {
+    /// <summary>
+    /// Holds the current session's order (cart) object.
+    /// </summary>
     public Order CurrentOrder;
 
+    /// <summary>
+    /// Handles the Page_Load event. 
+    /// Retrieves the current cart and processes action parameters (add/remove/update) from the URL or Form.
+    /// </summary>
     protected void Page_Load(object sender, EventArgs e)
     {
         CurrentOrder = GetCart();
@@ -15,10 +26,24 @@ public partial class Pages_Cart : System.Web.UI.Page
         string action = Request.Params["action"];
         if (!IsPostBack && !string.IsNullOrEmpty(action))
         {
+            int productId = 0;
+            if (Request.Params["productId"] != null) int.TryParse(Request.Params["productId"], out productId);
+
             if (action == "add")
             {
-                int productId = Convert.ToInt32(Request.Params["productId"]);
                 AddToCart(productId);
+                Response.Redirect("Cart.aspx");
+            }
+            else if (action == "remove")
+            {
+                RemoveFromCart(productId);
+                Response.Redirect("Cart.aspx");
+            }
+            else if (action == "update")
+            {
+                int qty = 1;
+                if (Request.Params["qty"] != null) int.TryParse(Request.Params["qty"], out qty);
+                UpdateCart(productId, qty);
                 Response.Redirect("Cart.aspx");
             }
             else if (action == "addCustom")
@@ -28,7 +53,7 @@ public partial class Pages_Cart : System.Web.UI.Page
             }
             else if (action == "checkout")
             {
-                // This is now handled by the dedicated Checkout.aspx page
+                // checkout logic is handled by Checkout.aspx
                 Response.Redirect("Checkout.aspx");
             }
         }
@@ -45,6 +70,11 @@ public partial class Pages_Cart : System.Web.UI.Page
         }
     }
 
+    /// <summary>
+    /// Initializes or retrieves the shopping cart from the Session.
+    /// Also validates product IDs against the database to ensure integrity.
+    /// </summary>
+    /// <returns>The Order object representing the cart.</returns>
     private Order GetCart()
     {
         if (Session["Cart"] == null)
@@ -66,6 +96,9 @@ public partial class Pages_Cart : System.Web.UI.Page
         return cart;
     }
 
+    /// <summary>
+    /// Adds a product to the cart by ID. If item exists, increments quantity.
+    /// </summary>
     private void AddToCart(int productId)
     {
         // Fetch Product
@@ -99,6 +132,9 @@ public partial class Pages_Cart : System.Web.UI.Page
         }
     }
 
+    /// <summary>
+    /// Adds a custom-configured product (e.g., blend) to the cart.
+    /// </summary>
     private void AddCustomToCart(string config)
     {
         // Fetch the real Custom Product from DB
@@ -125,68 +161,32 @@ public partial class Pages_Cart : System.Web.UI.Page
         }
     }
 
-    private void Checkout()
+    /// <summary>
+    /// Removes an item from the cart by Product ID.
+    /// </summary>
+    private void RemoveFromCart(int productId)
     {
-        // 1. Get User
-        string userId = "Guest";
-        if (Session["User"] != null)
-        {
-            // Lookup ID from Email
-            string email = Session["User"].ToString();
-            DataTable dtUser = DataHelper.ExecuteQuery("SELECT Id FROM Users WHERE Email = @Email", new Dictionary<string, object> { { "@Email", email } });
-            if (dtUser.Rows.Count > 0)
-            {
-                userId = dtUser.Rows[0]["Id"].ToString();
-            }
-        }
-        else
-        {
-            Response.Redirect("Login.aspx?returnUrl=Cart.aspx");
-            return;
-        }
-
-        // 2. Insert Order (Included missing required columns: ShippingMethod, PaymentMethod, PaymentStatus)
-        string insertOrder = @"INSERT INTO Orders (UserId, OrderDate, TotalAmount, Status, ShippingAddress, ShippingMethod, PaymentMethod, PaymentStatus) 
-                               OUTPUT INSERTED.Id 
-                               VALUES (@UserId, @OrderDate, @TotalAmount, @Status, @Address, @ShippingMethod, @PaymentMethod, @PaymentStatus)";
-
-        decimal total = GetTotal();
-        var orderParams = new Dictionary<string, object>
-        {
-            { "@UserId", userId },
-            { "@OrderDate", DateTime.Now },
-            { "@TotalAmount", total },
-            { "@Status", "Pending" },
-            { "@Address", "Store Pickup" },
-            { "@ShippingMethod", "Standard" },
-            { "@PaymentMethod", "Cash on Delivery" },
-            { "@PaymentStatus", "Pending" }
-        };
-
-        object orderIdObj = DataHelper.ExecuteScalar(insertOrder, orderParams);
-        int orderId = Convert.ToInt32(orderIdObj);
-
-        // 3. Insert Order Details
-        foreach (var item in CurrentOrder.OrderDetails)
-        {
-            string insertDetail = "INSERT INTO OrderDetails (OrderId, ProductId, Quantity, UnitPrice, CustomConfiguration) VALUES (@OrderId, @ProductId, @Quantity, @UnitPrice, @CustomConfig)";
-            var detailParams = new Dictionary<string, object>
-             {
-                 { "@OrderId", orderId },
-                 { "@ProductId", item.ProductId },
-                 { "@Quantity", item.Quantity },
-                 { "@UnitPrice", item.UnitPrice },
-                 { "@CustomConfig", item.CustomConfiguration ?? (object)DBNull.Value }
-             };
-            DataHelper.ExecuteNonQuery(insertDetail, detailParams);
-        }
-
-        // 4. Clear Cart
-        Session["Cart"] = null;
-        Response.Write("<script>alert('Order Placed Successfully!'); window.location='../Pages/Orders.aspx';</script>");
-        Response.End();
+        CurrentOrder.OrderDetails.RemoveAll(d => d.ProductId == productId);
     }
 
+    /// <summary>
+    /// Updates the quantity of a cart item.
+    /// </summary>
+    private void UpdateCart(int productId, int qty)
+    {
+        var item = CurrentOrder.OrderDetails.FirstOrDefault(d => d.ProductId == productId);
+        if (item != null)
+        {
+            if (qty > 0)
+                item.Quantity = qty;
+            else
+                CurrentOrder.OrderDetails.Remove(item);
+        }
+    }
+
+    /// <summary>
+    /// Calculates the total total price of items in the cart.
+    /// </summary>
     public decimal GetTotal()
     {
         if (CurrentOrder == null) return 0;
@@ -197,4 +197,6 @@ public partial class Pages_Cart : System.Web.UI.Page
         }
         return total;
     }
+
+    // Checkout method removed/commented as separate Checkout.aspx handles it now.
 }

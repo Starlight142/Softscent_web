@@ -2,13 +2,23 @@ using System;
 using System.Collections.Generic;
 using System.Web.UI;
 
+/// <summary>
+/// Code-behind for the Registration page.
+/// Handles new user account creation.
+/// </summary>
 public partial class Pages_Register : System.Web.UI.Page
 {
+    /// <summary>
+    /// Handles Page Load event.
+    /// </summary>
     protected void Page_Load(object sender, EventArgs e)
     {
-
     }
 
+    /// <summary>
+    /// Handles the Register button click event.
+    /// Validates redundant inputs, checks for existing users, and creates a new user record.
+    /// </summary>
     protected void btnRegister_Click(object sender, EventArgs e)
     {
         string fullName = txtFullName.Text.Trim();
@@ -16,6 +26,7 @@ public partial class Pages_Register : System.Web.UI.Page
         string password = txtPassword.Text;
         string confirmPassword = txtConfirmPassword.Text;
 
+        // Basic validation
         if (string.IsNullOrEmpty(fullName) || string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
         {
             lblMessage.Text = "All fields are required.";
@@ -28,14 +39,9 @@ public partial class Pages_Register : System.Web.UI.Page
             return;
         }
 
-        // Logic to save user to DB
-        // For this legacy conversion, we'll implement a simple SQL Insert using DataHelper
-        // Assuming a Users table exists or generic Identity table.
-        // For simplicity/compatibility with "AppUser", we might use "Users" table.
-
         try
         {
-            // Simple check if user exists
+            // Check if the email is already registered to avoid duplicates
             var checkUser = DataHelper.ExecuteQuery("SELECT * FROM Users WHERE Email = @Email", new Dictionary<string, object> { { "@Email", email } });
             if (checkUser.Rows.Count > 0)
             {
@@ -43,8 +49,7 @@ public partial class Pages_Register : System.Web.UI.Page
                 return;
             }
 
-            // Insert User
-            // Insert User with required Identity columns
+            // Insert new user into the database with standard Identity columns
             string insertSql = @"
                 INSERT INTO Users (
                     Id, UserName, NormalizedUserName, Email, NormalizedEmail, EmailConfirmed, 
@@ -58,14 +63,14 @@ public partial class Pages_Register : System.Web.UI.Page
             var parameters = new Dictionary<string, object>
             {
                 { "@Email", email },
-                { "@Password", password },
+                { "@Password", password }, // Note: In a production app, password should be hashed
                 { "@FullName", fullName }
             };
 
             DataHelper.ExecuteNonQuery(insertSql, parameters);
 
-            // Auto login or redirect
-            Session["User"] = email; // Simple Session Auth
+            // Successfully registered, set session and redirect to homepage
+            Session["User"] = email;
             Response.Redirect("../index.aspx");
         }
         catch (Exception ex)

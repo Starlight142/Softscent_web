@@ -29,17 +29,26 @@
                                             </div>
                                             <% if (!string.IsNullOrEmpty(item.CustomConfiguration)) { %>
                                                 <small class="text-muted">สูตรที่ปรุง: <%= item.CustomConfiguration %>
-                                                        </small>
+                                                </small>
                                                 <% } %>
                                         </td>
                                         <td>
                                             <%= item.UnitPrice.ToString("C") %>
                                         </td>
-                                        <td>
-                                            <%= item.Quantity %>
+                                        <div class="input-group input-group-sm" style="width: 120px;">
+                                            <button type="button" class="btn btn-outline-secondary"
+                                                onclick="updateQty('<%= item.ProductId %>', <%= item.Quantity - 1 %>)">-</button>
+                                            <input type="text" class="form-control text-center"
+                                                value="<%= item.Quantity %>" readonly>
+                                            <button type="button" class="btn btn-outline-secondary"
+                                                onclick="updateQty('<%= item.ProductId %>', <%= item.Quantity + 1 %>)">+</button>
+                                        </div>
                                         </td>
                                         <td class="text-end fw-bold">
                                             <%= (item.UnitPrice * item.Quantity).ToString("C") %>
+                                                <a href="Cart.aspx?action=remove&productId=<%= item.ProductId %>"
+                                                    class="btn btn-sm btn-outline-danger ms-3"><i
+                                                        class="fas fa-trash"></i></a>
                                         </td>
                                     </tr>
                                     <% } %>
@@ -58,6 +67,16 @@
                     <a href="Checkout.aspx" class="btn btn-primary btn-lg px-5 py-3 fw-bold shadow-sm">ดำเนินการชำระเงิน
                         <i class="fas fa-arrow-right ms-2"></i></a>
                 </div>
+
+                <script>
+                    function updateQty(offerId, newQty) {
+                        if (newQty < 1) {
+                            window.location.href = 'Cart.aspx?action=remove&productId=' + offerId;
+                            return;
+                        }
+                        window.location.href = 'Cart.aspx?action=update&productId=' + offerId + '&qty=' + newQty;
+                    }
+                </script>
                 <% } else { %>
                     <div class="text-center py-5">
                         <i class="fas fa-shopping-basket fa-3x text-muted mb-3"></i>

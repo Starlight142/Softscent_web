@@ -3,11 +3,19 @@ using System.Collections.Generic;
 using System.Data;
 using Softscent.Models;
 
+/// <summary>
+/// Code-behind for the Order Details page.
+/// Displays specifically selected order information and its line items.
+/// </summary>
 public partial class Pages_OrderDetails : System.Web.UI.Page
 {
     public int OrderId;
     public Order CurrentOrder;
 
+    /// <summary>
+    /// Handles the Page Load event.
+    /// Redirects to login if session is invalid, or back to history if no order ID is provided.
+    /// </summary>
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session["User"] == null)
@@ -25,6 +33,9 @@ public partial class Pages_OrderDetails : System.Web.UI.Page
         LoadOrderDetails();
     }
 
+    /// <summary>
+    /// Retrieves order header and item details from the database for the current order.
+    /// </summary>
     private void LoadOrderDetails()
     {
         string userEmail = Session["User"].ToString();
@@ -54,7 +65,7 @@ public partial class Pages_OrderDetails : System.Web.UI.Page
                 PaymentStatus = row["PaymentStatus"] != DBNull.Value ? row["PaymentStatus"].ToString() : "Success"
             };
 
-            // 2. Fetch Order Items
+            // 2. Fetch Order Items with Product Names joined
             string itemsQuery = @"SELECT od.*, p.Name as ProductName 
                                  FROM OrderDetails od 
                                  JOIN Products p ON od.ProductId = p.Id 
@@ -76,6 +87,9 @@ public partial class Pages_OrderDetails : System.Web.UI.Page
         }
     }
 
+    /// <summary>
+    /// Helper to translate user email to User ID string.
+    /// </summary>
     private string GetUserIdFromEmail(string email)
     {
         DataTable dt = DataHelper.ExecuteQuery("SELECT Id FROM Users WHERE Email = @Email", new Dictionary<string, object> { { "@Email", email } });
@@ -86,6 +100,9 @@ public partial class Pages_OrderDetails : System.Web.UI.Page
         return "Guest";
     }
 
+    /// <summary>
+    /// Helper to provide a Bootstrap color class for a status.
+    /// </summary>
     public string GetStatusColor(string status)
     {
         switch (status.ToLower())

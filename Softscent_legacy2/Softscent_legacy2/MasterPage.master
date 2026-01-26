@@ -35,8 +35,14 @@
                             <li class="nav-item">
                                 <a class="nav-link text-dark" href="/Pages/Products.aspx">สินค้า</a>
                             </li>
-                             <li class="nav-item">
+                            <li class="nav-item">
                                 <a class="nav-link text-dark" href="/Pages/Custom.aspx">จัดยาดมเอง</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" href="/Pages/News.aspx">ข่าวสาร</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" href="/Pages/Reviews.aspx">รีวิว</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-dark" href="/Pages/Cart.aspx">ตะกร้า</a>

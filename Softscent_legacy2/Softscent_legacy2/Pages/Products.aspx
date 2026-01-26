@@ -5,7 +5,18 @@
     </asp:Content>
     <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
         <div class="container py-5">
-            <h1 class="text-center mb-5">คอลเลกชันสินค้าของเรา</h1>
+            <div class="row mb-5 align-items-center">
+                <div class="col-md-6">
+                    <h1 class="text-start mb-0">คอลเลกชันสินค้าของเรา</h1>
+                </div>
+                <div class="col-md-6">
+                    <form method="get" action="Products.aspx" class="d-flex">
+                        <input type="text" name="q" class="form-control me-2"
+                            placeholder="ค้นหาสินค้า (เช่น ลาเวนเดอร์)..." value="<%= Request.QueryString[" q"] %>">
+                        <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i></button>
+                    </form>
+                </div>
+            </div>
             <div class="row">
                 <% foreach (var item in ProductList) { %>
                     <div class="col-md-4 mb-4">

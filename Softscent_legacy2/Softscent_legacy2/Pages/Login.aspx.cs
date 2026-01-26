@@ -3,13 +3,20 @@ using System.Collections.Generic;
 using System.Data;
 using System.Web.UI;
 
+/// <summary>
+/// Code-behind for the Login page.
+/// Handles user authentication and session creation.
+/// </summary>
 public partial class Pages_Login : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
     }
 
+    /// <summary>
+    /// Handles the Login button click event.
+    /// Validates credentials against the database and sets up the user session.
+    /// </summary>
     protected void btnLogin_Click(object sender, EventArgs e)
     {
         string email = txtEmail.Text.Trim();

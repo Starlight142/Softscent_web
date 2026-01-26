@@ -3,10 +3,21 @@ using System.Collections.Generic;
 using System.Data;
 using Softscent.Models;
 
+/// <summary>
+/// Code-behind for the Custom Inhaler page.
+/// Allows users to browse herbs and create a custom blend.
+/// </summary>
 public partial class Pages_Custom : System.Web.UI.Page
 {
+    /// <summary>
+    /// List of available herbs and their properties.
+    /// </summary>
     public List<Herb> HerbList = new List<Herb>();
 
+    /// <summary>
+    /// Handles Page Load event.
+    /// Fetches all herbs from the database to populate the selection list.
+    /// </summary>
     protected void Page_Load(object sender, EventArgs e)
     {
         DataTable dt = DataHelper.ExecuteQuery("SELECT * FROM Herbs");
@@ -23,6 +34,12 @@ public partial class Pages_Custom : System.Web.UI.Page
         }
         DataBind();
     }
+
+    /// <summary>
+    /// Helper to translate herb names to Thai for the UI.
+    /// </summary>
+    /// <param name="name">Scientific/English name of the herb.</param>
+    /// <returns>Thai common name.</returns>
     public string GetHerbThaiName(string name)
     {
         string n = name.ToLower();
@@ -48,6 +65,11 @@ public partial class Pages_Custom : System.Web.UI.Page
         return name;
     }
 
+    /// <summary>
+    /// Helper to provide a Thai description of the benefits for a specific herb.
+    /// </summary>
+    /// <param name="name">Name of the herb.</param>
+    /// <returns>Thai description of benefits.</returns>
     public string GetHerbThaiBenefit(string name)
     {
         string n = name.ToLower();

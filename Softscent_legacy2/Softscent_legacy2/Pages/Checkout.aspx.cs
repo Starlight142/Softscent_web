@@ -4,6 +4,10 @@ using System.Linq;
 using System.Data;
 using Softscent.Models;
 
+/// <summary>
+/// Code-behind for the Checkout page.
+/// Handles the final order placement process.
+/// </summary>
 public partial class Pages_Checkout : System.Web.UI.Page
 {
     public List<OrderDetail> OrderDetails = new List<OrderDetail>();
@@ -11,6 +15,10 @@ public partial class Pages_Checkout : System.Web.UI.Page
     public int CartCount = 0;
     public string UserAddress = "";
 
+    /// <summary>
+    /// Handles Page Load.
+    /// Validates user session, cart existence, and pre-fills user address if available.
+    /// </summary>
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session["User"] == null)
@@ -42,6 +50,10 @@ public partial class Pages_Checkout : System.Web.UI.Page
         }
     }
 
+    /// <summary>
+    /// Handles the "Complete Order" button click.
+    /// Creates the order header and details in the database, then clears the cart.
+    /// </summary>
     protected void btnCompleteOrder_Click(object sender, EventArgs e)
     {
         if (Session["User"] == null) return;
@@ -49,7 +61,7 @@ public partial class Pages_Checkout : System.Web.UI.Page
         string email = Session["User"].ToString();
         DataTable dtUser = DataHelper.ExecuteQuery("SELECT Id FROM Users WHERE Email = @Email", new Dictionary<string, object> { { "@Email", email } });
         if (dtUser.Rows.Count == 0) return;
-        
+
         string userId = dtUser.Rows[0]["Id"].ToString();
         Order cart = Session["Cart"] as Order;
 
