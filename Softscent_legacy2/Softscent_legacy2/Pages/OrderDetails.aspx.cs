@@ -107,10 +107,34 @@ public partial class Pages_OrderDetails : System.Web.UI.Page
     {
         switch (status.ToLower())
         {
-            case "completed": return "success";
+            case "completed": 
+            case "delivered":
+                return "success";
             case "pending": return "warning";
             case "cancelled": return "danger";
+            case "shipped": 
+            case "out_for_delivery":
+                return "info";
+            case "paid": return "primary";
             default: return "secondary";
+        }
+    }
+
+    /// <summary>
+    /// Translates the order status string to Thai for display.
+    /// </summary>
+    public string GetThaiStatus(string status)
+    {
+        switch (status.ToLower())
+        {
+            case "completed": return "สำเร็จ";
+            case "pending": return "รอชำระเงิน";
+            case "paid": return "ชำระเงินแล้ว";
+            case "shipped": return "อยู่ระหว่างจัดส่ง";
+            case "out_for_delivery": return "กำลังนำจ่าย";
+            case "delivered": return "จัดส่งสำเร็จ";
+            case "cancelled": return "ยกเลิก";
+            default: return status;
         }
     }
 }
