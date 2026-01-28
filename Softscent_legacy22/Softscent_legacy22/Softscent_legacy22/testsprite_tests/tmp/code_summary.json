@@ -1,0 +1,62 @@
+{
+    "tech_stack": [
+        "C#",
+        "ASP.NET Web Forms",
+        "JavaScript",
+        "SQL Server"
+    ],
+    "features": [
+        {
+            "name": "Authentication",
+            "description": "User login and registration functionality",
+            "files": [
+                "Pages/Login.aspx",
+                "Pages/Login.aspx.cs",
+                "Pages/Register.aspx",
+                "Pages/Register.aspx.cs"
+            ]
+        },
+        {
+            "name": "Shopping",
+            "description": "Product listing, shopping cart management, and checkout process",
+            "files": [
+                "Pages/Products.aspx",
+                "Pages/Products.aspx.cs",
+                "Pages/Cart.aspx",
+                "Pages/Cart.aspx.cs",
+                "Pages/Checkout.aspx",
+                "Pages/Checkout.aspx.cs"
+            ]
+        },
+        {
+            "name": "User Profile & Orders",
+            "description": "User profile management and order history viewing",
+            "files": [
+                "Pages/Profile.aspx",
+                "Pages/Profile.aspx.cs",
+                "Pages/Orders.aspx",
+                "Pages/Orders.aspx.cs",
+                "Pages/OrderDetails.aspx",
+                "Pages/OrderDetails.aspx.cs"
+            ]
+        },
+        {
+            "name": "Content (News & Reviews)",
+            "description": "News articles and product reviews",
+            "files": [
+                "Pages/News.aspx",
+                "Pages/News.aspx.cs",
+                "Pages/Reviews.aspx",
+                "Pages/Reviews.aspx.cs"
+            ]
+        },
+        {
+            "name": "Customization",
+            "description": "Product customization page",
+            "files": [
+                "Pages/Custom.aspx",
+                "Pages/Custom.aspx.cs"
+            ]
+        }
+    ]
+}

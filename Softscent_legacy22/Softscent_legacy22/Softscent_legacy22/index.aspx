@@ -1,0 +1,134 @@
+<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true"
+    CodeFile="index.aspx.cs" Inherits="index" %>
+
+    <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+        <div class="hero-section">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 text-start">
+                        <h1 class="hero-title">สูดกลิ่นธรรมชาติ รู้สึกผ่อนคลาย</h1>
+                        <p class="hero-subtitle">ยาดมสมุนไพรระดับพรีเมียม ปรุงเฉพาะเพื่อคุณ</p>
+                        <div class="d-flex gap-3">
+                            <a href="/Pages/Custom.aspx" class="btn btn-primary btn-lg">สร้างกลิ่นของคุณเอง</a>
+                            <a href="/Pages/Products.aspx" class="btn btn-outline-secondary btn-lg">เลือกซื้อสินค้า</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <!-- Ensure image path is correct relative to root or use absolute -->
+                        <img src="/Images/herbs-bundle.png" alt="Fresh Herbs"
+                            class="img-fluid rounded-3 shadow-lg fade-in-up" style="border: 4px solid white;">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-md-4 text-center">
+                <div class="card p-4">
+                    <i class="fas fa-leaf feature-icon"></i>
+                    <h3>ธรรมชาติ 100%</h3>
+                    <p>ผลิตจากน้ำมันหอมระเหยบริสุทธิ์และสมุนไพรออร์แกนิก</p>
+                </div>
+            </div>
+            <div class="col-md-4 text-center">
+                <div class="card p-4">
+                    <i class="fas fa-flask feature-icon"></i>
+                    <h3>สูตรเฉพาะตัว</h3>
+                    <p>เลือกส่วนผสมได้ตามอารมณ์ของคุณ</p>
+                </div>
+            </div>
+            <div class="col-md-4 text-center">
+                <div class="card p-4">
+                    <i class="fas fa-shipping-fast feature-icon"></i>
+                    <h3>จัดส่งรวดเร็ว</h3>
+                    <p>ผสมสดใหม่และจัดส่งตรงถึงมือคุณ</p>
+                </div>
+            </div>
+        </div>
+
+        <section class="py-5">
+            <div class="row mb-5">
+                <div class="col-12 text-center">
+                    <h2 class="mb-3">สินค้าขายดี</h2>
+                    <p class="text-muted">ค้นพบกลิ่นที่ทุกคนชื่นชอบ</p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm text-center">
+                        <img src="/Images/products/thai_jar.png" class="card-img-top mx-auto mt-3"
+                            style="width: 80%; object-fit: contain; max-height: 200px;" alt="Thai Herbal Jar">
+                        <div class="card-body">
+                            <h5 class="card-title">ยาดมกระปุกยาจีนโบราณ</h5>
+                            <p class="card-text text-muted">สูตรต้นตำรับจากสมุนไพรหมัก</p>
+                            <a href="/Pages/Products.aspx"
+                                class="btn btn-outline-primary btn-sm rounded-pill px-4">ดูรายละเอียด</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm text-center">
+                        <img src="/Images/products/peppermint.png" class="card-img-top mx-auto mt-3"
+                            style="width: 80%; object-fit: contain; max-height: 200px;" alt="Peppermint Inhaler">
+                        <div class="card-body">
+                            <h5 class="card-title">เปปเปอร์มิ้นท์ เฟรช</h5>
+                            <p class="card-text text-muted">เย็นสดชื่นทันทีและช่วยบรรเทาอาการปวดหัว</p>
+                            <a href="/Pages/Products.aspx"
+                                class="btn btn-outline-primary btn-sm rounded-pill px-4">ดูรายละเอียด</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm text-center">
+                        <img src="/Images/products/lavender.png" class="card-img-top mx-auto mt-3"
+                            style="width: 80%; object-fit: contain; max-height: 200px;" alt="Lavender Sleep">
+                        <div class="card-body">
+                            <h5 class="card-title">ลาเวนเดอร์ สลีป</h5>
+                            <p class="card-text text-muted">ผ่อนคลายและช่วยให้หลับสนิทยิ่งขึ้น</p>
+                            <a href="/Pages/Products.aspx"
+                                class="btn btn-outline-primary btn-sm rounded-pill px-4">ดูรายละเอียด</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-5 bg-white rounded-3 shadow-sm px-4 my-5">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h2 class="mb-4">พลังแห่งสมุนไพรไทย</h2>
+                    <p class="lead text-muted mb-4">
+                        เราใช้ภูมิปัญญาเก่าแก่หลายศตวรรษในการผสมผสานส่วนผสมธรรมชาติที่ดีที่สุด
+                    </p>
+                    <div class="d-flex mb-3">
+                        <div class="me-3 text-primary"><i class="fas fa-star fa-2x"></i></div>
+                        <div>
+                            <h5>โป๊ยกั๊ก</h5>
+                            <p class="small text-muted">โดดเด่นด้วยคุณสมบัติให้ความอบอุ่นและช่วยแก้คัดจมูก</p>
+                        </div>
+                    </div>
+                    <div class="d-flex mb-3">
+                        <div class="me-3 text-primary"><i class="fas fa-leaf fa-2x"></i></div>
+                        <div>
+                            <h5>กานพลูและอบเชย</h5>
+                            <p class="small text-muted">กลิ่นหอมเผ็ดร้อนที่ช่วยกระตุ้นการไหลเวียนโลหิตและเพิ่มพลังงาน
+                            </p>
+                        </div>
+                    </div>
+                    <div class="d-flex">
+                        <div class="me-3 text-primary"><i class="fas fa-wind fa-2x"></i></div>
+                        <div>
+                            <h5>เมนทอลและพิมเสน</h5>
+                            <p class="small text-muted">หัวใจสำคัญของความเย็นชื่นใจที่ช่วยให้ทางเดินหายใจโล่งทันที</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <div class="p-4 rounded-circle bg-light d-inline-block shadow-inner"
+                        style="width: 300px; height: 300px; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-mortar-pestle fa-5x text-secondary opacity-50"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </asp:Content>
