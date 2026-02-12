@@ -62,14 +62,19 @@
                                     <i class="fas fa-tachometer-alt me-2"></i> Dashboard
                                 </a>
                             </li>
-                             <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <i class="fas fa-box me-2"></i> Products (Coming Soon)
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Pages/Admin/ProductManagement.aspx">
+                                    <i class="fas fa-box me-2"></i> Products
                                 </a>
                             </li>
                              <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <i class="fas fa-shopping-cart me-2"></i> Orders (Coming Soon)
+                                <a class="nav-link" href="/Pages/Admin/IngredientManagement.aspx">
+                                    <i class="fas fa-leaf me-2"></i> Ingredients (Custom)
+                                </a>
+                            </li>
+                             <li class="nav-item">
+                                <a class="nav-link" href="/Pages/Admin/OrderManagement.aspx">
+                                    <i class="fas fa-shopping-cart me-2"></i> Orders
                                 </a>
                             </li>
                         </ul>

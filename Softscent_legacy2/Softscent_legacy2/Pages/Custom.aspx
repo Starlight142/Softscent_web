@@ -43,7 +43,8 @@
                                                     <%= GetHerbThaiName(herb.Name) %>
                                                 </div>
                                                 <div class="text-muted small">
-                                                    <%= GetHerbThaiBenefit(herb.Name) %>
+                                                    <%= !string.IsNullOrEmpty(GetHerbThaiBenefit(herb.Name)) ?
+                                                        GetHerbThaiBenefit(herb.Name) : herb.Benefit %>
                                                 </div>
                                             </div>
                                         </label>
@@ -65,7 +66,8 @@
                                                             <%= GetHerbThaiName(herb.Name) %>
                                                         </div>
                                                         <div class="text-muted small text-success">
-                                                            <%= GetHerbThaiBenefit(herb.Name) %>
+                                                            <%= !string.IsNullOrEmpty(GetHerbThaiBenefit(herb.Name)) ?
+                                                                GetHerbThaiBenefit(herb.Name) : herb.Benefit %>
                                                         </div>
                                                     </div>
                                                 </label>

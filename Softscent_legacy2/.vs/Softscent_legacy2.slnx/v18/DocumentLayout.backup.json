@@ -3,11 +3,47 @@
   "WorkspaceRootPath": "D:\\Softscent_web\\Softscent_legacy2\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B4899C51-6591-C54D-6B3D-8798301BFFF9}|D:\\Softscent_web\\Softscent_legacy2\\Softscent_legacy2|d:\\softscent_web\\softscent_legacy2\\softscent_legacy2\\pages\\profile.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "AbsoluteMoniker": "D:0:0:{B4899C51-6591-C54D-6B3D-8798301BFFF9}|D:\\Softscent_web\\Softscent_legacy2\\Softscent_legacy2|d:\\softscent_web\\softscent_legacy2\\softscent_legacy2\\index.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{B4899C51-6591-C54D-6B3D-8798301BFFF9}|D:\\Softscent_web\\Softscent_legacy2\\Softscent_legacy2|solutionrelative:softscent_legacy2\\index.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4899C51-6591-C54D-6B3D-8798301BFFF9}|D:\\Softscent_web\\Softscent_legacy2\\Softscent_legacy2|D:\\Softscent_web\\Softscent_legacy2\\softscent_legacy2\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{B4899C51-6591-C54D-6B3D-8798301BFFF9}|D:\\Softscent_web\\Softscent_legacy2\\Softscent_legacy2|solutionrelative:softscent_legacy2\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4899C51-6591-C54D-6B3D-8798301BFFF9}|D:\\Softscent_web\\Softscent_legacy2\\Softscent_legacy2|D:\\Softscent_web\\Softscent_legacy2\\softscent_legacy2\\pages\\orderdetails.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{B4899C51-6591-C54D-6B3D-8798301BFFF9}|D:\\Softscent_web\\Softscent_legacy2\\Softscent_legacy2|solutionrelative:softscent_legacy2\\pages\\orderdetails.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4899C51-6591-C54D-6B3D-8798301BFFF9}|D:\\Softscent_web\\Softscent_legacy2\\Softscent_legacy2|D:\\Softscent_web\\Softscent_legacy2\\softscent_legacy2\\pages\\orderdetails.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4899C51-6591-C54D-6B3D-8798301BFFF9}|D:\\Softscent_web\\Softscent_legacy2\\Softscent_legacy2|solutionrelative:softscent_legacy2\\pages\\orderdetails.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4899C51-6591-C54D-6B3D-8798301BFFF9}|D:\\Softscent_web\\Softscent_legacy2\\Softscent_legacy2|D:\\Softscent_web\\Softscent_legacy2\\softscent_legacy2\\masterpage.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}",
+      "RelativeMoniker": "D:0:0:{B4899C51-6591-C54D-6B3D-8798301BFFF9}|D:\\Softscent_web\\Softscent_legacy2\\Softscent_legacy2|solutionrelative:softscent_legacy2\\masterpage.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4899C51-6591-C54D-6B3D-8798301BFFF9}|D:\\Softscent_web\\Softscent_legacy2\\Softscent_legacy2|D:\\Softscent_web\\Softscent_legacy2\\softscent_legacy2\\pages\\profile_addresses.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4899C51-6591-C54D-6B3D-8798301BFFF9}|D:\\Softscent_web\\Softscent_legacy2\\Softscent_legacy2|solutionrelative:softscent_legacy2\\pages\\profile_addresses.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4899C51-6591-C54D-6B3D-8798301BFFF9}|D:\\Softscent_web\\Softscent_legacy2\\Softscent_legacy2|D:\\Softscent_web\\Softscent_legacy2\\softscent_legacy2\\pages\\profile.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
       "RelativeMoniker": "D:0:0:{B4899C51-6591-C54D-6B3D-8798301BFFF9}|D:\\Softscent_web\\Softscent_legacy2\\Softscent_legacy2|solutionrelative:softscent_legacy2\\pages\\profile.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B4899C51-6591-C54D-6B3D-8798301BFFF9}|D:\\Softscent_web\\Softscent_legacy2\\Softscent_legacy2|d:\\softscent_web\\softscent_legacy2\\softscent_legacy2\\pages\\orders.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B4899C51-6591-C54D-6B3D-8798301BFFF9}|D:\\Softscent_web\\Softscent_legacy2\\Softscent_legacy2|D:\\Softscent_web\\Softscent_legacy2\\softscent_legacy2\\pages\\login.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4899C51-6591-C54D-6B3D-8798301BFFF9}|D:\\Softscent_web\\Softscent_legacy2\\Softscent_legacy2|solutionrelative:softscent_legacy2\\pages\\login.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4899C51-6591-C54D-6B3D-8798301BFFF9}|D:\\Softscent_web\\Softscent_legacy2\\Softscent_legacy2|D:\\Softscent_web\\Softscent_legacy2\\softscent_legacy2\\pages\\login.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{B4899C51-6591-C54D-6B3D-8798301BFFF9}|D:\\Softscent_web\\Softscent_legacy2\\Softscent_legacy2|solutionrelative:softscent_legacy2\\pages\\login.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4899C51-6591-C54D-6B3D-8798301BFFF9}|D:\\Softscent_web\\Softscent_legacy2\\Softscent_legacy2|D:\\Softscent_web\\Softscent_legacy2\\softscent_legacy2\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{B4899C51-6591-C54D-6B3D-8798301BFFF9}|D:\\Softscent_web\\Softscent_legacy2\\Softscent_legacy2|solutionrelative:softscent_legacy2\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4899C51-6591-C54D-6B3D-8798301BFFF9}|D:\\Softscent_web\\Softscent_legacy2\\Softscent_legacy2|D:\\Softscent_web\\Softscent_legacy2\\softscent_legacy2\\pages\\orders.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B4899C51-6591-C54D-6B3D-8798301BFFF9}|D:\\Softscent_web\\Softscent_legacy2\\Softscent_legacy2|solutionrelative:softscent_legacy2\\pages\\orders.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -17,6 +53,10 @@
     {
       "AbsoluteMoniker": "D:0:0:{B4899C51-6591-C54D-6B3D-8798301BFFF9}|D:\\Softscent_web\\Softscent_legacy2\\Softscent_legacy2|D:\\Softscent_web\\Softscent_legacy2\\softscent_legacy2\\pages\\news.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
       "RelativeMoniker": "D:0:0:{B4899C51-6591-C54D-6B3D-8798301BFFF9}|D:\\Softscent_web\\Softscent_legacy2\\Softscent_legacy2|solutionrelative:softscent_legacy2\\pages\\news.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Softscent_web\\Softscent_legacy2\\Softscent_legacy2\\Create_Profile_Tables.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Softscent_legacy2\\Create_Profile_Tables.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,7 +66,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -34,7 +74,129 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "site.css",
+              "DocumentMoniker": "D:\\Softscent_web\\Softscent_legacy2\\Softscent_legacy2\\Css\\site.css",
+              "RelativeDocumentMoniker": "Softscent_legacy2\\Css\\site.css",
+              "ToolTip": "D:\\Softscent_web\\Softscent_legacy2\\Softscent_legacy2\\Css\\site.css",
+              "RelativeToolTip": "Softscent_legacy2\\Css\\site.css",
+              "ViewState": "AgIAAGYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2026-02-07T12:38:01.601Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "OrderDetails.aspx",
+              "DocumentMoniker": "D:\\Softscent_web\\Softscent_legacy2\\Softscent_legacy2\\Pages\\OrderDetails.aspx",
+              "RelativeDocumentMoniker": "Softscent_legacy2\\Pages\\OrderDetails.aspx",
+              "ToolTip": "D:\\Softscent_web\\Softscent_legacy2\\Softscent_legacy2\\Pages\\OrderDetails.aspx",
+              "RelativeToolTip": "Softscent_legacy2\\Pages\\OrderDetails.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2026-02-07T12:36:25.671Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "OrderDetails.aspx.cs",
+              "DocumentMoniker": "D:\\Softscent_web\\Softscent_legacy2\\Softscent_legacy2\\Pages\\OrderDetails.aspx.cs",
+              "RelativeDocumentMoniker": "Softscent_legacy2\\Pages\\OrderDetails.aspx.cs",
+              "ToolTip": "D:\\Softscent_web\\Softscent_legacy2\\Softscent_legacy2\\Pages\\OrderDetails.aspx.cs",
+              "RelativeToolTip": "Softscent_legacy2\\Pages\\OrderDetails.aspx.cs",
+              "ViewState": "AgIAAGIAAAAAAAAAAAAwwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-07T12:37:22.261Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "index.aspx",
+              "DocumentMoniker": "D:\\Softscent_web\\Softscent_legacy2\\Softscent_legacy2\\index.aspx",
+              "RelativeDocumentMoniker": "Softscent_legacy2\\index.aspx",
+              "ToolTip": "D:\\Softscent_web\\Softscent_legacy2\\Softscent_legacy2\\index.aspx",
+              "RelativeToolTip": "Softscent_legacy2\\index.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2026-02-02T10:08:25.883Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "MasterPage.master",
+              "DocumentMoniker": "D:\\Softscent_web\\Softscent_legacy2\\Softscent_legacy2\\MasterPage.master",
+              "RelativeDocumentMoniker": "Softscent_legacy2\\MasterPage.master",
+              "ToolTip": "D:\\Softscent_web\\Softscent_legacy2\\Softscent_legacy2\\MasterPage.master",
+              "RelativeToolTip": "Softscent_legacy2\\MasterPage.master",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2026-02-02T10:08:20.035Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Profile_Addresses.aspx.cs",
+              "DocumentMoniker": "D:\\Softscent_web\\Softscent_legacy2\\Softscent_legacy2\\Pages\\Profile_Addresses.aspx.cs",
+              "RelativeDocumentMoniker": "Softscent_legacy2\\Pages\\Profile_Addresses.aspx.cs",
+              "ToolTip": "D:\\Softscent_web\\Softscent_legacy2\\Softscent_legacy2\\Pages\\Profile_Addresses.aspx.cs",
+              "RelativeToolTip": "Softscent_legacy2\\Pages\\Profile_Addresses.aspx.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-02T08:05:05.91Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Create_Profile_Tables.sql",
+              "DocumentMoniker": "D:\\Softscent_web\\Softscent_legacy2\\Softscent_legacy2\\Create_Profile_Tables.sql",
+              "RelativeDocumentMoniker": "Softscent_legacy2\\Create_Profile_Tables.sql",
+              "ToolTip": "D:\\Softscent_web\\Softscent_legacy2\\Softscent_legacy2\\Create_Profile_Tables.sql",
+              "RelativeToolTip": "Softscent_legacy2\\Create_Profile_Tables.sql",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2026-02-02T08:05:01.389Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Login.aspx.cs",
+              "DocumentMoniker": "D:\\Softscent_web\\Softscent_legacy2\\Softscent_legacy2\\Pages\\Login.aspx.cs",
+              "RelativeDocumentMoniker": "Softscent_legacy2\\Pages\\Login.aspx.cs",
+              "ToolTip": "D:\\Softscent_web\\Softscent_legacy2\\Softscent_legacy2\\Pages\\Login.aspx.cs",
+              "RelativeToolTip": "Softscent_legacy2\\Pages\\Login.aspx.cs",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAowC8AAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-02T07:27:51.305Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Login.aspx",
+              "DocumentMoniker": "D:\\Softscent_web\\Softscent_legacy2\\Softscent_legacy2\\Pages\\Login.aspx",
+              "RelativeDocumentMoniker": "Softscent_legacy2\\Pages\\Login.aspx",
+              "ToolTip": "D:\\Softscent_web\\Softscent_legacy2\\Softscent_legacy2\\Pages\\Login.aspx",
+              "RelativeToolTip": "Softscent_legacy2\\Pages\\Login.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2026-02-02T07:27:50.147Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Web.config",
+              "DocumentMoniker": "D:\\Softscent_web\\Softscent_legacy2\\Softscent_legacy2\\Web.config",
+              "RelativeDocumentMoniker": "Softscent_legacy2\\Web.config",
+              "ToolTip": "D:\\Softscent_web\\Softscent_legacy2\\Softscent_legacy2\\Web.config",
+              "RelativeToolTip": "Softscent_legacy2\\Web.config",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAABKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2026-01-28T14:03:49.787Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "Profile.aspx",
               "DocumentMoniker": "D:\\Softscent_web\\Softscent_legacy2\\Softscent_legacy2\\Pages\\Profile.aspx",
               "RelativeDocumentMoniker": "Softscent_legacy2\\Pages\\Profile.aspx",
@@ -42,12 +204,11 @@
               "RelativeToolTip": "Softscent_legacy2\\Pages\\Profile.aspx",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2026-01-27T07:04:40.127Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-27T07:04:40.127Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 10,
               "Title": "Orders.aspx.cs",
               "DocumentMoniker": "D:\\Softscent_web\\Softscent_legacy2\\Softscent_legacy2\\Pages\\Orders.aspx.cs",
               "RelativeDocumentMoniker": "Softscent_legacy2\\Pages\\Orders.aspx.cs",
@@ -55,12 +216,11 @@
               "RelativeToolTip": "Softscent_legacy2\\Pages\\Orders.aspx.cs",
               "ViewState": "AgIAABwAAAAAAAAAAAAgwDgAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-26T16:41:11.908Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-26T16:41:11.908Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 11,
               "Title": "NewsDetails.aspx.cs",
               "DocumentMoniker": "D:\\Softscent_web\\Softscent_legacy2\\Softscent_legacy2\\Pages\\NewsDetails.aspx.cs",
               "RelativeDocumentMoniker": "Softscent_legacy2\\Pages\\NewsDetails.aspx.cs",
@@ -68,12 +228,11 @@
               "RelativeToolTip": "Softscent_legacy2\\Pages\\NewsDetails.aspx.cs",
               "ViewState": "AgIAAAEAAAAAAAAAAAAhwA4AAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-26T12:25:43.889Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-26T12:25:43.889Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 12,
               "Title": "News.aspx",
               "DocumentMoniker": "D:\\Softscent_web\\Softscent_legacy2\\Softscent_legacy2\\Pages\\News.aspx",
               "RelativeDocumentMoniker": "Softscent_legacy2\\Pages\\News.aspx",
@@ -81,8 +240,7 @@
               "RelativeToolTip": "Softscent_legacy2\\Pages\\News.aspx",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2026-01-26T11:13:53.722Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-26T11:13:53.722Z"
             }
           ]
         }

@@ -1,0 +1,18 @@
+{
+  "status": "commited",
+  "type": "frontend",
+  "scope": "codebase",
+  "localEndpoint": "http://localhost:62507",
+  "loginUser": "alex.leo@gmail.com",
+  "loginPassword": "ga555666",
+  "executionArgs": {
+    "projectName": "Softscent_legacy2",
+    "projectPath": "d:\\Softscent_web\\Softscent_legacy2\\Softscent_legacy2",
+    "testIds": [],
+    "additionalInstruction": "Regenerate all test codes. The backend state has changed significantly. \n1. Products.aspx now has a search bar (form with input[name='q']). Search is working. \n2. Cart.aspx now has UPDATE (+/- buttons) and REMOVE (trash icon or - button) functionality implemented. \n3. News.aspx links to NewsDetails.aspx. \n4. Reviews.aspx should display reviews (and has dummy data if DB empty).\nEnsure tests use correct selectors for these new elements. ignore connection timeout errors during generation.",
+    "envs": {
+      "API_KEY": "sk-user-03ZmfmxJD-ceR_ejDsvIgpD1WXDT2Z2qlpi9kBa2N84FQvSgGZsW2Cg7kJKnEXEU4in8i1EIwpKVjace98UzPdTDgQ5PpEWm_1q6d2avYtmwd3HVsGVASXUct0wVu4M78tE"
+    }
+  },
+  "proxy": "http://67a2e7bd-33fc-428a-846d-4550388f15aa:fefe4ncWSwd38m3nJ7eRpwLKBvQVm78V@tun.testsprite.com:8080"
+}
