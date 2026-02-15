@@ -38,5 +38,10 @@ namespace Softscent.Models
         /// Indicates if this product represents a customizable item (e.g., custom inhaler).
         /// </summary>
         public bool IsCustomizable { get; set; }
+
+        /// <summary>
+        /// Quantity of product in stock.
+        /// </summary>
+        public int StockQuantity { get; set; }
     }
 }

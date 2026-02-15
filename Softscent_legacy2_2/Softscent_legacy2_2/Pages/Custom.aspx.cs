@@ -29,7 +29,8 @@ public partial class Pages_Custom : System.Web.UI.Page
                 Name = row["Name"].ToString(),
                 Description = row["Description"] != DBNull.Value ? row["Description"].ToString() : "",
                 Price = Convert.ToDecimal(row["Price"]),
-                Benefit = row["Benefit"] != DBNull.Value ? row["Benefit"].ToString() : ""
+                Benefit = row["Benefit"] != DBNull.Value ? row["Benefit"].ToString() : "",
+                StockQuantity = row["StockQuantity"] != DBNull.Value ? Convert.ToInt32(row["StockQuantity"]) : 0
             });
         }
         DataBind();

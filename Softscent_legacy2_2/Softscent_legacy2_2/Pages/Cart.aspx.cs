@@ -106,28 +106,37 @@ public partial class Pages_Cart : System.Web.UI.Page
         if (dt.Rows.Count > 0)
         {
             DataRow row = dt.Rows[0];
+            int stock = row["StockQuantity"] != DBNull.Value ? Convert.ToInt32(row["StockQuantity"]) : 0;
+
             Product p = new Product
             {
                 Id = Convert.ToInt32(row["Id"]),
                 Name = row["Name"].ToString(),
-                Price = Convert.ToDecimal(row["Price"])
+                Price = Convert.ToDecimal(row["Price"]),
+                StockQuantity = stock
             };
 
             // Check if exists
             var existing = CurrentOrder.OrderDetails.FirstOrDefault(d => d.ProductId == productId && string.IsNullOrEmpty(d.CustomConfiguration));
             if (existing != null)
             {
-                existing.Quantity++;
+                if (existing.Quantity < stock)
+                {
+                    existing.Quantity++;
+                }
             }
             else
             {
-                CurrentOrder.OrderDetails.Add(new OrderDetail
+                if (stock > 0)
                 {
-                    ProductId = productId,
-                    ProductInfo = p, // Keep reference for display
-                    Quantity = 1,
-                    UnitPrice = p.Price
-                });
+                    CurrentOrder.OrderDetails.Add(new OrderDetail
+                    {
+                        ProductId = productId,
+                        ProductInfo = p, // Keep reference for display
+                        Quantity = 1,
+                        UnitPrice = p.Price
+                    });
+                }
             }
         }
     }
@@ -142,12 +151,16 @@ public partial class Pages_Cart : System.Web.UI.Page
         if (dt.Rows.Count > 0)
         {
             DataRow row = dt.Rows[0];
+            int stock = row["StockQuantity"] != DBNull.Value ? Convert.ToInt32(row["StockQuantity"]) : 0;
+            if (stock <= 0) return; // Out of stock
+
             Product p = new Product
             {
                 Id = Convert.ToInt32(row["Id"]),
                 Name = row["Name"].ToString(),
                 Price = Convert.ToDecimal(row["Price"]),
-                IsCustomizable = true
+                IsCustomizable = true,
+                StockQuantity = stock
             };
 
             CurrentOrder.OrderDetails.Add(new OrderDetail
@@ -172,15 +185,33 @@ public partial class Pages_Cart : System.Web.UI.Page
     /// <summary>
     /// Updates the quantity of a cart item.
     /// </summary>
+    /// <summary>
+    /// Updates the quantity of a cart item with stock validation.
+    /// </summary>
     private void UpdateCart(int productId, int qty)
     {
         var item = CurrentOrder.OrderDetails.FirstOrDefault(d => d.ProductId == productId);
         if (item != null)
         {
             if (qty > 0)
-                item.Quantity = qty;
+            {
+                // Check stock
+                object stockObj = DataHelper.ExecuteScalar("SELECT StockQuantity FROM Products WHERE Id = @Id", new Dictionary<string, object> { { "@Id", productId } });
+                int stock = stockObj != null && stockObj != DBNull.Value ? Convert.ToInt32(stockObj) : 0;
+
+                if (qty <= stock)
+                {
+                    item.Quantity = qty;
+                }
+                else
+                {
+                    item.Quantity = stock; // Max out at available stock
+                }
+            }
             else
+            {
                 CurrentOrder.OrderDetails.Remove(item);
+            }
         }
     }
 

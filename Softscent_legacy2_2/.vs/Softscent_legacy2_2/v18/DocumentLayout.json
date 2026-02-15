@@ -1,0 +1,41 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Softscent_web\\Softscent_legacy2_2\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{22C7B149-E0BA-4F26-A161-E8BEC2AAAA84}|D:\\Softscent_web\\Softscent_legacy2_2\\Softscent_legacy2_2|d:\\softscent_web\\softscent_legacy2_2\\softscent_legacy2_2\\pages\\checkout.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22C7B149-E0BA-4F26-A161-E8BEC2AAAA84}|D:\\Softscent_web\\Softscent_legacy2_2\\Softscent_legacy2_2|solutionrelative:softscent_legacy2_2\\pages\\checkout.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Checkout.aspx.cs",
+              "DocumentMoniker": "D:\\Softscent_web\\Softscent_legacy2_2\\Softscent_legacy2_2\\Pages\\Checkout.aspx.cs",
+              "RelativeDocumentMoniker": "Softscent_legacy2_2\\Pages\\Checkout.aspx.cs",
+              "ToolTip": "D:\\Softscent_web\\Softscent_legacy2_2\\Softscent_legacy2_2\\Pages\\Checkout.aspx.cs",
+              "RelativeToolTip": "Softscent_legacy2_2\\Pages\\Checkout.aspx.cs",
+              "ViewState": "AgIAAIkAAAAAAAAAAAAAAFQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-15T07:04:05.43Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

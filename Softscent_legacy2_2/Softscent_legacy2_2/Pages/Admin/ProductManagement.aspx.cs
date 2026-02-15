@@ -9,6 +9,9 @@ public partial class Pages_Admin_ProductManagement : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        // Ensure Database Schema is up to date (Migration)
+        try { DataHelper.EnsureStockColumn(); } catch { /* Ignore if already exists or permission issues */ }
+
         // Simple Admin Check
         if (Session["User"] == null)
         {
@@ -75,6 +78,7 @@ public partial class Pages_Admin_ProductManagement : System.Web.UI.Page
             txtDesc.Text = row["Description"].ToString();
             txtDescThai.Text = row["DescriptionThai"].ToString();
             txtPrice.Text = row["Price"].ToString();
+            txtStock.Text = row["StockQuantity"] != DBNull.Value ? row["StockQuantity"].ToString() : "0";
             txtImageUrl.Text = row["ImageUrl"].ToString();
             chkCustomizable.Checked = row["IsCustomizable"] != DBNull.Value && Convert.ToBoolean(row["IsCustomizable"]);
         }
@@ -91,6 +95,9 @@ public partial class Pages_Admin_ProductManagement : System.Web.UI.Page
                 return;
             }
 
+            int stock = 0;
+            if (!int.TryParse(txtStock.Text, out stock)) stock = 0;
+
             Dictionary<string, object> parameters = new Dictionary<string, object>
             {
                 { "@Name", txtName.Text },
@@ -98,6 +105,7 @@ public partial class Pages_Admin_ProductManagement : System.Web.UI.Page
                 { "@Description", txtDesc.Text },
                 { "@DescriptionThai", txtDescThai.Text },
                 { "@Price", price },
+                { "@StockQuantity", stock },
                 { "@ImageUrl", txtImageUrl.Text },
                 { "@IsCustomizable", chkCustomizable.Checked }
             };
@@ -105,8 +113,8 @@ public partial class Pages_Admin_ProductManagement : System.Web.UI.Page
             if (string.IsNullOrEmpty(hfProductId.Value))
             {
                 // Insert
-                string query = @"INSERT INTO Products (Name, NameThai, Description, DescriptionThai, Price, ImageUrl, IsCustomizable) 
-                               Values (@Name, @NameThai, @Description, @DescriptionThai, @Price, @ImageUrl, @IsCustomizable)";
+                string query = @"INSERT INTO Products (Name, NameThai, Description, DescriptionThai, Price, StockQuantity, ImageUrl, IsCustomizable) 
+                               Values (@Name, @NameThai, @Description, @DescriptionThai, @Price, @StockQuantity, @ImageUrl, @IsCustomizable)";
                 DataHelper.ExecuteNonQuery(query, parameters);
             }
             else
@@ -119,6 +127,7 @@ public partial class Pages_Admin_ProductManagement : System.Web.UI.Page
                                Description = @Description, 
                                DescriptionThai = @DescriptionThai, 
                                Price = @Price, 
+                               StockQuantity = @StockQuantity,
                                ImageUrl = @ImageUrl, 
                                IsCustomizable = @IsCustomizable
                                WHERE Id = @Id";
@@ -146,6 +155,7 @@ public partial class Pages_Admin_ProductManagement : System.Web.UI.Page
         txtDesc.Text = "";
         txtDescThai.Text = "";
         txtPrice.Text = "";
+        txtStock.Text = "0";
         txtImageUrl.Text = "";
         chkCustomizable.Checked = false;
         errorAlert.Attributes.Add("class", "alert alert-danger mt-3 d-none");

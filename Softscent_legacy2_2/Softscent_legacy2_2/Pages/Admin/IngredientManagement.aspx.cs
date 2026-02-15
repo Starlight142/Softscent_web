@@ -9,6 +9,9 @@ public partial class Pages_Admin_IngredientManagement : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        // Ensure Database Schema is up to date
+        try { DataHelper.EnsureHerbStockColumn(); } catch { }
+
         // Simple Admin Check
         if (Session["User"] == null)
         {
@@ -72,6 +75,7 @@ public partial class Pages_Admin_IngredientManagement : System.Web.UI.Page
             hfIngredientId.Value = row["Id"].ToString();
             txtName.Text = row["Name"].ToString();
             txtPrice.Text = row["Price"].ToString();
+            txtStock.Text = row["StockQuantity"] != DBNull.Value ? row["StockQuantity"].ToString() : "0";
             txtBenefit.Text = row["Benefit"] != DBNull.Value ? row["Benefit"].ToString() : "";
         }
     }
@@ -86,18 +90,22 @@ public partial class Pages_Admin_IngredientManagement : System.Web.UI.Page
                 return;
             }
 
+            int stock = 0;
+            if (!int.TryParse(txtStock.Text, out stock)) stock = 0;
+
             Dictionary<string, object> parameters = new Dictionary<string, object>
             {
                 { "@Name", txtName.Text },
                 { "@Price", price },
+                { "@StockQuantity", stock },
                 { "@Benefit", txtBenefit.Text }
             };
 
             if (string.IsNullOrEmpty(hfIngredientId.Value))
             {
                 // Insert
-                string query = @"INSERT INTO Herbs (Name, Price, Benefit) 
-                               Values (@Name, @Price, @Benefit)";
+                string query = @"INSERT INTO Herbs (Name, Price, StockQuantity, Benefit) 
+                               Values (@Name, @Price, @StockQuantity, @Benefit)";
                 DataHelper.ExecuteNonQuery(query, parameters);
             }
             else
@@ -107,6 +115,7 @@ public partial class Pages_Admin_IngredientManagement : System.Web.UI.Page
                 string query = @"UPDATE Herbs SET 
                                Name = @Name, 
                                Price = @Price, 
+                               StockQuantity = @StockQuantity,
                                Benefit = @Benefit
                                WHERE Id = @Id";
                 DataHelper.ExecuteNonQuery(query, parameters);
@@ -129,6 +138,7 @@ public partial class Pages_Admin_IngredientManagement : System.Web.UI.Page
         hfIngredientId.Value = "";
         txtName.Text = "";
         txtPrice.Text = "0.00";
+        txtStock.Text = "0";
         txtBenefit.Text = "";
         errorAlert.Attributes.Add("class", "alert alert-danger mt-3 d-none");
     }

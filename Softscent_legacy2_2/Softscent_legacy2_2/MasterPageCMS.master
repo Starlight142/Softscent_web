@@ -1,5 +1,4 @@
 <%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPageCMS.master.cs" Inherits="MasterPageCMS" %>
-
 <!DOCTYPE html>
 <html lang="en">
 <head runat="server">
@@ -9,6 +8,7 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="~/Css/site.css" rel="stylesheet" />
+    <link href="~/Css/admin.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,86 +16,95 @@
     
     <asp:ContentPlaceHolder id="HeadContent" runat="server">
     </asp:ContentPlaceHolder>
-    <style>
-        .sidebar {
-            height: 100vh;
-            position: fixed;
-            top: 0;
-            left: 0;
-            padding-top: 60px;
-            width: 250px;
-            background-color: #f8f9fa;
-            border-right: 1px solid #dee2e6;
-        }
-        .main-content {
-            margin-left: 250px;
-            padding: 20px;
-            padding-top: 80px;
-        }
-        @media (max-width: 768px) {
-            .sidebar { width: 100%; height: auto; position: relative; }
-            .main-content { margin-left: 0; }
-        }
-    </style>
 </head>
 <body>
     <form id="form1" runat="server">
-        <header>
-             <nav class="navbar navbar-dark bg-dark fixed-top">
-                <div class="container-fluid">
-                    <a class="navbar-brand" href="/Pages/Admin/Dashboard.aspx">Softscent Admin</a>
-                    <div class="d-flex">
-                         <a href="/index.aspx" class="btn btn-outline-light btn-sm me-2">Visit Site</a>
-                         <asp:LinkButton ID="btnLogout" runat="server" CssClass="btn btn-outline-danger btn-sm" OnClick="btnLogout_Click">Logout</asp:LinkButton>
+        <div class="d-flex">
+            <!-- Sidebar -->
+            <nav class="admin-sidebar" id="sidebar">
+                <div class="sidebar-header">
+                    <div class="brand-text">
+                        <i class="fas fa-leaf me-2 text-primary"></i>
+                        Softscent
                     </div>
                 </div>
+                <div class="nav flex-column">
+                    <a class="nav-link <%= Request.FilePath.Contains("Dashboard") ? "active" : "" %>" href="/Pages/Admin/Dashboard.aspx">
+                         <div class="d-flex align-items-center">
+                            <i class="fas fa-home"></i> Dashboard
+                         </div>
+                    </a>
+                    <a class="nav-link <%= Request.FilePath.Contains("ProductManagement") ? "active" : "" %>" href="/Pages/Admin/ProductManagement.aspx">
+                        <div class="d-flex align-items-center">
+                            <i class="fas fa-box-open"></i> Products
+                        </div>
+                    </a>
+                    <a class="nav-link <%= Request.FilePath.Contains("IngredientManagement") ? "active" : "" %>" href="/Pages/Admin/IngredientManagement.aspx">
+                        <div class="d-flex align-items-center">
+                            <i class="fas fa-mortar-pestle"></i> Ingredients
+                        </div>
+                    </a>
+                    <a class="nav-link <%= Request.FilePath.Contains("OrderManagement") ? "active" : "" %>" href="/Pages/Admin/OrderManagement.aspx">
+                        <div class="d-flex align-items-center">
+                            <i class="fas fa-shopping-bag"></i> Orders
+                        </div>
+                    </a>
+                    <a class="nav-link <%= Request.FilePath.Contains("UserManagement") ? "active" : "" %>" href="/Pages/Admin/UserManagement.aspx">
+                         <div class="d-flex align-items-center">
+                             <i class="fas fa-users"></i> Users
+                         </div>
+                    </a>
+                    <a class="nav-link mt-5 text-danger" href="#" onclick="__doPostBack('<%= btnLogout.UniqueID %>', '')">
+                         <div class="d-flex align-items-center">
+                            <i class="fas fa-sign-out-alt"></i> Logout
+                         </div>
+                    </a>
+                    <asp:LinkButton ID="btnLogout" runat="server" OnClick="btnLogout_Click" style="display:none;"></asp:LinkButton>
+                </div>
             </nav>
-        </header>
 
-        <div class="container-fluid">
-            <div class="row">
-                <nav class="col-md-3 col-lg-2 d-md-block sidebar collapse">
-                    <div class="position-sticky">
-                        <ul class="nav flex-column">
-                            <li class="nav-item">
-                                <a class="nav-link active" href="/Pages/Admin/Dashboard.aspx">
-                                    <i class="fas fa-tachometer-alt me-2"></i> Dashboard
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/Pages/Admin/ProductManagement.aspx">
-                                    <i class="fas fa-box me-2"></i> Products
-                                </a>
-                            </li>
-                             <li class="nav-item">
-                                <a class="nav-link" href="/Pages/Admin/IngredientManagement.aspx">
-                                    <i class="fas fa-leaf me-2"></i> Ingredients (Custom)
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/Pages/Admin/OrderManagement.aspx">
-                                    <i class="fas fa-shopping-cart me-2"></i> Orders
-                                </a>
-                            </li>
-                             <li class="nav-item">
-                                <a class="nav-link" href="/Pages/Admin/UserManagement.aspx">
-                                    <i class="fas fa-users me-2"></i> User Management
-                                </a>
-                            </li>
-                        </ul>
+            <!-- Main Content -->
+            <div class="w-100">
+                <!-- Header -->
+                <header class="admin-header">
+                    <div class="d-flex align-items-center">
+                        <button class="btn btn-link text-dark d-lg-none me-3" type="button" onclick="toggleSidebar()">
+                            <i class="fas fa-bars"></i>
+                        </button>
+                        <h4 class="page-title">Management Console</h4>
                     </div>
-                </nav>
+                    <div class="d-flex align-items-center gap-3">
+                        <a href="/index.aspx" class="btn btn-outline-primary btn-sm rounded-pill px-3">
+                            <i class="fas fa-external-link-alt me-2"></i> Visit Site
+                        </a>
+                        <div class="dropdown">
+                            <button class="btn btn-link text-dark p-0" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                <img src="https://ui-avatars.com/api/?name=Admin&background=27ae60&color=fff" class="rounded-circle" width="40" height="40">
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0" aria-labelledby="userDropdown">
+                                <li><a class="dropdown-item" href="#">Profile</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item text-danger" href="#" onclick="__doPostBack('<%= btnLogout.UniqueID %>', '')">Logout</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </header>
 
-                <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 main-content">
+                <main class="admin-main">
                     <asp:ContentPlaceHolder id="MainContent" runat="server">
                     </asp:ContentPlaceHolder>
                 </main>
             </div>
         </div>
-        
+
         <!-- Scripts -->
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script>
+            function toggleSidebar() {
+                document.getElementById('sidebar').classList.toggle('active');
+            }
+        </script>
     </form>
 </body>
 </html>

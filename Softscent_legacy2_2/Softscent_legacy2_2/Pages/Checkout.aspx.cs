@@ -65,6 +65,56 @@ public partial class Pages_Checkout : System.Web.UI.Page
         string userId = dtUser.Rows[0]["Id"].ToString();
         Order cart = Session["Cart"] as Order;
 
+        // 0. Pre-check Stock
+        foreach (var item in cart.OrderDetails)
+        {
+            // Check Main Product Stock
+            object stockObj = DataHelper.ExecuteScalar("SELECT StockQuantity FROM Products WHERE Id = @Id", new Dictionary<string, object> { { "@Id", item.ProductId } });
+            int currentStock = stockObj != null && stockObj != DBNull.Value ? Convert.ToInt32(stockObj) : 0;
+
+            if (currentStock < item.Quantity)
+            {
+                string prodName = "Unknown Product";
+                if (item.ProductInfo != null) prodName = item.ProductInfo.Name;
+                else
+                {
+                    object nameObj = DataHelper.ExecuteScalar("SELECT Name FROM Products WHERE Id = @Id", new Dictionary<string, object> { { "@Id", item.ProductId } });
+                    if (nameObj != null) prodName = nameObj.ToString();
+                }
+
+                Response.Write(string.Format("<script>alert('สินค้า {0} มีสินค้าไม่เพียงพอ (เหลือ {1} ชิ้น)'); window.location='Cart.aspx';</script>", prodName, currentStock));
+                Response.End();
+                return;
+            }
+
+            // Check Custom Ingredients Stock (if applicable)
+            if (!string.IsNullOrEmpty(item.CustomConfiguration))
+            {
+                var ingredients = item.CustomConfiguration.Split(new[] { ", " }, StringSplitOptions.RemoveEmptyEntries);
+                foreach (var ingredientName in ingredients)
+                {
+                    // Find herb by name
+                    // Note: We use name matching because that's how it's stored in CustomConfiguration currently. 
+                    // Ideally, it should be IDs, but legacy structure dictates name.
+                    DataTable dtHerb = DataHelper.ExecuteQuery("SELECT Id, Name, StockQuantity FROM Herbs WHERE Name = @Name", new Dictionary<string, object> { { "@Name", ingredientName } });
+
+                    if (dtHerb.Rows.Count > 0)
+                    {
+                        int hStock = Convert.ToInt32(dtHerb.Rows[0]["StockQuantity"]);
+                        // For each item quantity, we need 1 unit of herb (assumption)
+                        int required = item.Quantity;
+
+                        if (hStock < required)
+                        {
+                            Response.Write(string.Format("<script>alert('วัตถุดิบ {0} สำหรับสินค้าสั่งทำ มีไม่เพียงพอ (เหลือ {1} หน่วย)'); window.location='Cart.aspx';</script>", ingredientName, hStock));
+                            Response.End();
+                            return;
+                        }
+                    }
+                }
+            }
+        }
+
         // Get form values
         string address = Request.Form["shippingAddress"];
         string shipMethod = Request.Form["shippingMethod"];
@@ -103,6 +153,23 @@ public partial class Pages_Checkout : System.Web.UI.Page
                  { "@CustomConfig", item.CustomConfiguration ?? (object)DBNull.Value }
              };
             DataHelper.ExecuteNonQuery(insertDetail, detailParams);
+
+            // 2.1 Update Stock
+            string updateStock = "UPDATE Products SET StockQuantity = StockQuantity - @Qty WHERE Id = @Id";
+            DataHelper.ExecuteNonQuery(updateStock, new Dictionary<string, object> { { "@Qty", item.Quantity }, { "@Id", item.ProductId } });
+
+            // 2.2 Update Ingredient Stock (if applicable)
+            if (!string.IsNullOrEmpty(item.CustomConfiguration))
+            {
+                var ingredients = item.CustomConfiguration.Split(new[] { ", " }, StringSplitOptions.RemoveEmptyEntries);
+                foreach (var ingredientName in ingredients)
+                {
+                    // Update herb stock by name
+                    // Assuming 1 unit of herb per 1 unit of product
+                    string updateHerb = "UPDATE Herbs SET StockQuantity = StockQuantity - @Qty WHERE Name = @Name";
+                    DataHelper.ExecuteNonQuery(updateHerb, new Dictionary<string, object> { { "@Qty", item.Quantity }, { "@Name", ingredientName } });
+                }
+            }
         }
 
         // 3. Clear Cart

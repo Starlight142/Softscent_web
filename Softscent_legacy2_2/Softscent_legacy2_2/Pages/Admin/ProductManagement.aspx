@@ -51,6 +51,7 @@
                             <asp:BoundField DataField="Name" HeaderText="Name" />
                             <asp:BoundField DataField="NameThai" HeaderText="Name (TH)" />
                             <asp:BoundField DataField="Price" HeaderText="Price" DataFormatString="{0:C}" />
+                            <asp:BoundField DataField="StockQuantity" HeaderText="Stock" />
                             <asp:TemplateField HeaderText="Customizable">
                                 <ItemTemplate>
                                     <span
@@ -125,6 +126,11 @@
                                             <asp:TextBox ID="txtPrice" runat="server" CssClass="form-control"
                                                 TextMode="Number" Step="0.01" required="true"></asp:TextBox>
                                         </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Stock Quantity</label>
+                                        <asp:TextBox ID="txtStock" runat="server" CssClass="form-control"
+                                            TextMode="Number" required="true"></asp:TextBox>
                                     </div>
                                     <div class="col-md-6">
                                         <label class="form-label">Image URL</label>

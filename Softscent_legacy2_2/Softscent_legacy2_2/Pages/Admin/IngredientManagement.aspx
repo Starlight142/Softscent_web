@@ -37,6 +37,7 @@
                             <asp:BoundField DataField="Id" HeaderText="#" />
                             <asp:BoundField DataField="Name" HeaderText="Name" />
                             <asp:BoundField DataField="Price" HeaderText="Price" DataFormatString="{0:C}" />
+                            <asp:BoundField DataField="StockQuantity" HeaderText="Stock" />
                             <asp:TemplateField HeaderText="Benefit / Description">
                                 <ItemTemplate>
                                     <div class="text-muted small" style="max-width: 300px;">
@@ -96,6 +97,11 @@
                                     </div>
                                     <div class="form-text">Additional cost for this ingredient (usually 0 if included in
                                         base price).</div>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Stock Quantity</label>
+                                    <asp:TextBox ID="txtStock" runat="server" CssClass="form-control" TextMode="Number"
+                                        required="true"></asp:TextBox>
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label">Benefit / Description</label>

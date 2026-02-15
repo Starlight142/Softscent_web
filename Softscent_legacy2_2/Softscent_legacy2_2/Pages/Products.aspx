@@ -34,17 +34,22 @@
                                         <span class="h5 mb-0 text-primary">
                                             <%= item.Price.ToString("C") %>
                                         </span>
-                                        <% if (item.IsCustomizable) { %>
-                                            <a href="Custom.aspx?productId=<%= item.Id %>"
-                                                class="btn btn-outline-primary">
-                                                <i class="fas fa-magic me-2"></i> ปรุงสูตรเอง
-                                            </a>
-                                            <% } else { %>
-                                                <a href="Cart.aspx?action=add&productId=<%= item.Id %>"
-                                                    class="btn btn-primary">
-                                                    <i class="fas fa-shopping-cart me-2"></i> เพิ่มลงตะกร้า
+                                        <% if (item.StockQuantity> 0) { %>
+                                            <% if (item.IsCustomizable) { %>
+                                                <a href="Custom.aspx?productId=<%= item.Id %>"
+                                                    class="btn btn-outline-primary">
+                                                    <i class="fas fa-magic me-2"></i> ปรุงสูตรเอง
                                                 </a>
-                                                <% } %>
+                                                <% } else { %>
+                                                    <a href="Cart.aspx?action=add&productId=<%= item.Id %>"
+                                                        class="btn btn-primary">
+                                                        <i class="fas fa-shopping-cart me-2"></i> เพิ่มลงตะกร้า
+                                                    </a>
+                                                    <% } %>
+                                                        <% } else { %>
+                                                            <button class="btn btn-secondary"
+                                                                disabled>สินค้าหมด</button>
+                                                            <% } %>
                                     </div>
                                 </div>
                         </div>

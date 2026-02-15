@@ -35,5 +35,10 @@ namespace Softscent.Models
         /// Stated health or wellness benefit of the herb.
         /// </summary>
         public string Benefit { get; set; }
+
+        /// <summary>
+        /// Quantity of this herb in stock.
+        /// </summary>
+        public int StockQuantity { get; set; }
     }
 }

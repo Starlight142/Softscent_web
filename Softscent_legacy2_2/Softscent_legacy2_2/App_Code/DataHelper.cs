@@ -97,4 +97,32 @@ public static class DataHelper
             }
         }
     }
+
+    /// <summary>
+    /// Checks if the StockQuantity column exists in the Products table and adds it if not.
+    /// </summary>
+    public static void EnsureStockColumn()
+    {
+        string query = @"
+            IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'Products' AND COLUMN_NAME = 'StockQuantity')
+            BEGIN
+                ALTER TABLE Products ADD StockQuantity INT NOT NULL DEFAULT 0;
+                EXEC('UPDATE Products SET StockQuantity = 50'); -- Set initial stock to 50 for existing items
+            END";
+        ExecuteNonQuery(query);
+    }
+
+    /// <summary>
+    /// Checks if the StockQuantity column exists in the Herbs (Ingredients) table and adds it if not.
+    /// </summary>
+    public static void EnsureHerbStockColumn()
+    {
+        string query = @"
+            IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'Herbs' AND COLUMN_NAME = 'StockQuantity')
+            BEGIN
+                ALTER TABLE Herbs ADD StockQuantity INT NOT NULL DEFAULT 0;
+                EXEC('UPDATE Herbs SET StockQuantity = 100'); -- Set initial stock to 100 for existing herbs
+            END";
+        ExecuteNonQuery(query);
+    }
 }

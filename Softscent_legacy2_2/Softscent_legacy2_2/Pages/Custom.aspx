@@ -34,8 +34,8 @@
                             <% foreach (var herb in HerbList.FindAll(h=> h.Id <= 6)) { %>
                                     <div class="form-check mb-3 custom-herb-item">
                                         <input class="form-check-input herb-checkbox" type="checkbox"
-                                            value="<%= herb.Name %>" id="herb_<%= herb.Id %>"
-                                            name="selectedHerbs_array">
+                                            value="<%= herb.Name %>" id="herb_<%= herb.Id %>" name="selectedHerbs_array"
+                                            <%=herb.StockQuantity <=0 ? "disabled" : "" %>>
                                         <label class="form-check-label d-flex align-items-center w-100"
                                             for="herb_<%= herb.Id %>">
                                             <div class="flex-grow-1">
@@ -46,6 +46,10 @@
                                                     <%= !string.IsNullOrEmpty(GetHerbThaiBenefit(herb.Name)) ?
                                                         GetHerbThaiBenefit(herb.Name) : herb.Benefit %>
                                                 </div>
+                                                <% if (herb.StockQuantity <=0) { %>
+                                                    <div class="text-danger small fw-bold">สินค้าหมด (Out of Stock)
+                                                    </div>
+                                                    <% } %>
                                             </div>
                                         </label>
                                     </div>
@@ -58,7 +62,8 @@
                                             <div class="form-check mb-3 custom-herb-item">
                                                 <input class="form-check-input herb-checkbox" type="checkbox"
                                                     value="<%= herb.Name %>" id="herb_<%= herb.Id %>"
-                                                    name="selectedHerbs_array">
+                                                    name="selectedHerbs_array" <%=herb.StockQuantity <=0 ? "disabled"
+                                                    : "" %>>
                                                 <label class="form-check-label d-flex align-items-center w-100"
                                                     for="herb_<%= herb.Id %>">
                                                     <div class="flex-grow-1">
@@ -69,6 +74,10 @@
                                                             <%= !string.IsNullOrEmpty(GetHerbThaiBenefit(herb.Name)) ?
                                                                 GetHerbThaiBenefit(herb.Name) : herb.Benefit %>
                                                         </div>
+                                                        <% if (herb.StockQuantity <=0) { %>
+                                                            <div class="text-danger small fw-bold">สินค้าหมด (Out of
+                                                                Stock)</div>
+                                                            <% } %>
                                                     </div>
                                                 </label>
                                             </div>

@@ -53,7 +53,8 @@ public partial class Pages_Products : System.Web.UI.Page
                 Description = row["Description"].ToString(),
                 Price = Convert.ToDecimal(row["Price"]),
                 ImageUrl = row["ImageUrl"].ToString(),
-                IsCustomizable = Convert.ToBoolean(row["IsCustomizable"])
+                IsCustomizable = Convert.ToBoolean(row["IsCustomizable"]),
+                StockQuantity = row["StockQuantity"] != DBNull.Value ? Convert.ToInt32(row["StockQuantity"]) : 0
             });
         }
     }

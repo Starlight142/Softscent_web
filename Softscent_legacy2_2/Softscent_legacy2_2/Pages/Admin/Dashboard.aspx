@@ -4,80 +4,102 @@
     <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" Runat="Server">
     </asp:Content>
     <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
-        <div
-            class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-            <h1 class="h2">Dashboard</h1>
+        <div class="mb-5">
+            <h2 class="fw-bold mb-1">Dashboard Overview</h2>
+            <p class="text-muted">Welcome back, Admin. Here's what's happening with your store today.</p>
         </div>
 
-        <div class="row">
-            <div class="col-md-4 mb-4">
-                <div class="card text-white bg-primary mb-3">
-                    <div class="card-header">Total Orders</div>
-                    <div class="card-body">
-                        <h5 class="card-title">
-                            <%= TotalOrders %>
-                        </h5>
-                        <p class="card-text">All time orders.</p>
+        <div class="row g-4 mb-5">
+            <!-- Total Orders -->
+            <div class="col-md-4">
+                <div class="stat-card primary">
+                    <div class="stat-icon">
+                        <i class="fas fa-shopping-bag"></i>
+                    </div>
+                    <div class="stat-value">
+                        <%= TotalOrders %>
+                    </div>
+                    <div class="stat-label">Total Orders</div>
+                    <div class="position-absolute top-0 end-0 p-3 opacity-25">
+                        <i class="fas fa-shopping-bag fa-5x text-primary transform scale-150"></i>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 mb-4">
-                <div class="card text-white bg-success mb-3">
-                    <div class="card-header">Total Revenue</div>
-                    <div class="card-body">
-                        <h5 class="card-title">
-                            <%= TotalRevenue.ToString("C") %>
-                        </h5>
-                        <p class="card-text">Lifetime earnings.</p>
+
+            <!-- Revenue -->
+            <div class="col-md-4">
+                <div class="stat-card warning">
+                    <div class="stat-icon">
+                        <i class="fas fa-coins"></i>
+                    </div>
+                    <div class="stat-value">
+                        <%= TotalRevenue.ToString("C") %>
+                    </div>
+                    <div class="stat-label">Total Earnings</div>
+                    <div class="position-absolute top-0 end-0 p-3 opacity-25">
+                        <i class="fas fa-wallet fa-5x text-warning transform scale-150"></i>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 mb-4">
-                <div class="card text-white bg-info mb-3">
-                    <div class="card-header">Pending Orders</div>
-                    <div class="card-body">
-                        <h5 class="card-title">
-                            <%= PendingOrders %>
-                        </h5>
-                        <p class="card-text">Orders waiting for process.</p>
+
+            <!-- Pending -->
+            <div class="col-md-4">
+                <div class="stat-card info">
+                    <div class="stat-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="stat-value">
+                        <%= PendingOrders %>
+                    </div>
+                    <div class="stat-label">Pending Orders</div>
+                    <div class="position-absolute top-0 end-0 p-3 opacity-25">
+                        <i class="fas fa-hourglass-half fa-5x text-info transform scale-150"></i>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="card shadow-sm">
-            <div class="card-body">
-                <h3 class="card-title mb-3">Recent Orders</h3>
-                <div class="table-responsive">
-                    <table class="table table-striped table-sm mb-0">
-                        <thead>
+        <h4 class="fw-bold mb-4">Recent Transactions</h4>
+        <div class="modern-table-card">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                    <thead class="bg-light">
+                        <tr>
+                            <th class="ps-4">Order ID</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                            <th>Amount</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% foreach (var order in RecentOrders) { %>
                             <tr>
-                                <th>#</th>
-                                <th>Date</th>
-                                <th>Status</th>
-                                <th>Total</th>
+                                <td class="ps-4 fw-bold">#<%= order.Id %>
+                                </td>
+                                <td class="text-muted">
+                                    <i class="far fa-calendar-alt me-2"></i>
+                                    <%= order.OrderDate.ToShortDateString() %>
+                                </td>
+                                <td>
+                                    <% string badgeClass="completed" ; if(order.Status=="Pending" ) badgeClass="pending"
+                                        ; else if(order.Status=="Cancelled" ) badgeClass="cancelled" ; %>
+                                        <span class="status-badge <%= badgeClass %>">
+                                            <%= order.Status %>
+                                        </span>
+                                </td>
+                                <td class="fw-bold">
+                                    <%= order.TotalAmount.ToString("C") %>
+                                </td>
+                                <td>
+                                    <a href="#" class="btn btn-sm btn-light rounded-circle shadow-sm">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </a>
+                                </td>
                             </tr>
-                        </thead>
-                        <tbody>
-                            <% foreach (var order in RecentOrders) { %>
-                                <tr>
-                                    <td>
-                                        <%= order.Id %>
-                                    </td>
-                                    <td>
-                                        <%= order.OrderDate.ToShortDateString() %>
-                                    </td>
-                                    <td>
-                                        <%= order.Status %>
-                                    </td>
-                                    <td>
-                                        <%= order.TotalAmount.ToString("C") %>
-                                    </td>
-                                </tr>
-                                <% } %>
-                        </tbody>
-                    </table>
-                </div>
+                            <% } %>
+                    </tbody>
+                </table>
             </div>
         </div>
     </asp:Content>
