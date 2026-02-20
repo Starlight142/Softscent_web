@@ -43,5 +43,15 @@ namespace Softscent.Models
         /// Quantity of product in stock.
         /// </summary>
         public int StockQuantity { get; set; }
+
+        /// <summary>
+        /// Name of the product in Thai.
+        /// </summary>
+        public string NameThai { get; set; }
+
+        /// <summary>
+        /// Description of the product in Thai.
+        /// </summary>
+        public string DescriptionThai { get; set; }
     }
 }

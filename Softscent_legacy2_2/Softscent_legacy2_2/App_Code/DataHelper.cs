@@ -125,4 +125,43 @@ public static class DataHelper
             END";
         ExecuteNonQuery(query);
     }
+
+    /// <summary>
+    /// Checks if the NameThai and DescriptionThai columns exist in the Products table and adds them if not. 
+    /// Populates them with default Thai values for known products to replace hardcoded logic.
+    /// </summary>
+    public static void EnsureTranslationColumns()
+    {
+        string query = @"
+            IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'Products' AND COLUMN_NAME = 'NameThai')
+            BEGIN
+                ALTER TABLE Products ADD NameThai NVARCHAR(255) NULL;
+            END
+
+            IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'Products' AND COLUMN_NAME = 'DescriptionThai')
+            BEGIN
+                ALTER TABLE Products ADD DescriptionThai NVARCHAR(MAX) NULL;
+            END
+            
+            -- Populate known products if Thai fields are empty (One-time migration logic)
+            UPDATE Products SET NameThai = N'ยาดมสมุนไพรแบบกระปุก', DescriptionThai = N'สูตรต้นตำรับจากสมุนไพรหมัก กลิ่นหอมเอกลักษณ์ไทย' 
+            WHERE Name LIKE '%traditional thai jar%' AND (NameThai IS NULL OR NameThai = '');
+
+            UPDATE Products SET NameThai = N'เปปเปอร์มิ้นท์ เฟรช', DescriptionThai = N'เย็นสดชื่นทันที ช่วยให้ตื่นตัวและแก้ปวดหัว' 
+            WHERE Name LIKE '%peppermint fresh%' AND (NameThai IS NULL OR NameThai = '');
+
+            UPDATE Products SET NameThai = N'ลาเวนเดอร์ สลีป', DescriptionThai = N'กลิ่นหอมผ่อนคลาย ช่วยให้หลับสนิทตลอดคืน' 
+            WHERE Name LIKE '%lavender sleep%' AND (NameThai IS NULL OR NameThai = '');
+
+            UPDATE Products SET NameThai = N'ซิทรัส เอนเนอร์จี', DescriptionThai = N'เติมพลังให้ร่างกายด้วยกลิ่นส้มสดชื่น' 
+            WHERE Name LIKE '%citrus energy%' AND (NameThai IS NULL OR NameThai = '');
+
+            UPDATE Products SET NameThai = N'ยูคาลิปตัส เคลียร์', DescriptionThai = N'ช่วยให้หายใจโล่ง แก้คัดจมูกอย่างได้ผล' 
+            WHERE Name LIKE '%eucalyptus clear%' AND (NameThai IS NULL OR NameThai = '');
+
+            UPDATE Products SET NameThai = N'ตะไคร้หอม เซน', DescriptionThai = N'สัมผัสความผ่อนคลายเหมือนอยู่ในสปา' 
+            WHERE Name LIKE '%lemongrass zen%' AND (NameThai IS NULL OR NameThai = '');
+        ";
+        ExecuteNonQuery(query);
+    }
 }

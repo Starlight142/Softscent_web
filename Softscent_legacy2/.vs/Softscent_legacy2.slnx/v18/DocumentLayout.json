@@ -129,7 +129,6 @@
               "RelativeDocumentMoniker": "Softscent_legacy2\\MasterPage.master",
               "ToolTip": "D:\\Softscent_web\\Softscent_legacy2\\Softscent_legacy2\\MasterPage.master",
               "RelativeToolTip": "Softscent_legacy2\\MasterPage.master",
-              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
               "WhenOpened": "2026-02-02T10:08:20.035Z",
               "EditorCaption": ""
@@ -191,8 +190,7 @@
               "RelativeToolTip": "Softscent_legacy2\\Web.config",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAABKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
-              "WhenOpened": "2026-01-28T14:03:49.787Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-28T14:03:49.787Z"
             },
             {
               "$type": "Document",
